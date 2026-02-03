@@ -1,0 +1,91 @@
+
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  @include mat.theme((
+    color: (
+      primary: mat.$magenta-palette,
+      tertiary: mat.$violet-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+// Light theme (default) - Clean white design
+body.light-theme {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #f0f2f5;
+  --bg-card: #ffffff;
+  --bg-gradient-1: #ffffff;
+  --bg-gradient-2: #f5f7fa;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a68;
+  --text-muted: #6c757d;
+  --accent-primary: #667eea;
+  --accent-secondary: #764ba2;
+  --border-color: #e9ecef;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --hero-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --hero-text: #ffffff;
+  --card-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  --card-hover-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+  --chip-bg: #f0f0f0;
+  --chip-text: #333333;
+  color-scheme: light;
+}
+
+// Dark theme
+body.dark-theme {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #21262d;
+  --bg-card: #1c2128;
+  --bg-gradient-1: #0d1117;
+  --bg-gradient-2: #161b22;
+  --text-primary: #f0f6fc;
+  --text-secondary: #c9d1d9;
+  --text-muted: #8b949e;
+  --accent-primary: #8b9cf6;
+  --accent-secondary: #a78bfa;
+  --border-color: #30363d;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --hero-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  --hero-text: #f0f6fc;
+  --card-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  --card-hover-shadow: 0 15px 40px rgba(139, 156, 246, 0.2);
+  --chip-bg: #30363d;
+  --chip-text: #f0f6fc;
+  color-scheme: dark;
+
+  @include mat.theme((
+    color: (
+      primary: mat.$violet-palette,
+      tertiary: mat.$magenta-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+body {
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font: var(--mat-sys-body-medium);
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  // Reset the user agent margin.
+  margin: 0;
+  height: 100%;
+}
+/* You can add global styles to this file, and also import other style files */

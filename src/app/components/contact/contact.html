@@ -1,0 +1,80 @@
+<section id="contact" class="contact-section">
+  <div class="section-container">
+    <h2 class="section-title">
+      <mat-icon>email</mat-icon>
+      Get In Touch
+    </h2>
+
+    <div class="contact-content">
+      <div class="contact-info" *ngIf="personalInfo">
+        <mat-card>
+          <mat-card-content>
+            <div class="info-item">
+              <mat-icon>email</mat-icon>
+              <div>
+                <h3>Email</h3>
+                <a [href]="'mailto:' + personalInfo.email">{{ personalInfo.email }}</a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <mat-icon>phone</mat-icon>
+              <div>
+                <h3>Phone</h3>
+                <a [href]="'tel:' + personalInfo.phone">{{ personalInfo.phone }}</a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <mat-icon>location_on</mat-icon>
+              <div>
+                <h3>Location</h3>
+                <p>{{ personalInfo.location }}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <mat-card class="contact-form">
+        <mat-card-header>
+          <mat-card-title>Send Me a Message</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <form (ngSubmit)="submitForm()">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Your Name</mat-label>
+              <input matInput [(ngModel)]="formData.name" name="name" required />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Your Email</mat-label>
+              <input matInput type="email" [(ngModel)]="formData.email" name="email" required />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Message</mat-label>
+              <textarea
+                matInput
+                [(ngModel)]="formData.message"
+                name="message"
+                rows="6"
+                required
+              ></textarea>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit" [disabled]="sending || submitted">
+              <span *ngIf="!sending && !submitted">
+                <mat-icon>send</mat-icon>
+                Send Message
+              </span>
+              <span *ngIf="sending">Sending...</span>
+              <span *ngIf="submitted && !sending">Opening Email Client... ✓</span>
+            </button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>

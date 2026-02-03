@@ -1,0 +1,32 @@
+<section id="experience" class="experience-section">
+  <div class="section-container">
+    <h2 class="section-title">
+      <mat-icon>work</mat-icon>
+      Experience
+    </h2>
+
+    <div class="timeline">
+      <mat-card class="experience-card" *ngFor="let exp of experiences; let last = last">
+        <div class="timeline-marker">
+          <div class="marker" [class.current]="exp.current"></div>
+          <div class="line" *ngIf="!last"></div>
+        </div>
+
+        <mat-card-header>
+          <mat-card-title>{{ exp.position }}</mat-card-title>
+          <mat-card-subtitle>
+            {{ exp.company }} <span *ngIf="exp.location">| {{ exp.location }}</span>
+          </mat-card-subtitle>
+          <span class="date-range">{{ exp.startDate }} - {{ exp.current ? 'Present' : exp.endDate }}</span>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p class="description">{{ exp.description }}</p>
+          <ul class="achievements" *ngIf="exp.achievements">
+            <li *ngFor="let achievement of exp.achievements">{{ achievement }}</li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>

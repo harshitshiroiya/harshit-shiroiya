@@ -1,0 +1,40 @@
+{
+  "location": "eastus",
+  "environmentId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{environmentName}",
+  "template": {
+    "containers": [
+      {
+        "image": "ghcr.io/{repository}/resume-website:latest",
+        "name": "resume-website",
+        "resources": {
+          "cpu": 0.5,
+          "memory": "1Gi"
+        },
+        "env": [
+          {
+            "name": "NODE_ENV",
+            "value": "production"
+          }
+        ]
+      }
+    ],
+    "scale": {
+      "minReplicas": 1,
+      "maxReplicas": 3
+    }
+  },
+  "configuration": {
+    "activeRevisionsMode": "single",
+    "ingress": {
+      "external": true,
+      "targetPort": 4200,
+      "allowInsecure": false,
+      "traffic": [
+        {
+          "latestRevision": true,
+          "weight": 100
+        }
+      ]
+    }
+  }
+}

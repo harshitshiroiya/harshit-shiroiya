@@ -1,0 +1,23 @@
+<section id="skills" class="skills-section">
+  <div class="section-container">
+    <h2 class="section-title">
+      <mat-icon>star</mat-icon>
+      Skills & Expertise
+    </h2>
+
+    <div class="skills-grid">
+      <mat-card class="skill-card" *ngFor="let skillGroup of skills">
+        <mat-card-header>
+          <mat-card-title>{{ skillGroup.category }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chips-container">
+            <mat-chip *ngFor="let skill of skillGroup.items" highlighted>
+              {{ skill }}
+            </mat-chip>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,120 @@
+.header-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  background: var(--bg-primary) !important;
+  transition: background-color 0.3s ease;
+
+  .toolbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .logo {
+    font-size: 24px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+
+    .logo-text {
+      background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  .nav-menu {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 40px;
+
+    button {
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      color: var(--text-primary);
+
+      &:hover {
+        color: var(--accent-primary);
+      }
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    .theme-toggle {
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: var(--accent-primary);
+        transform: rotate(180deg);
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: var(--text-primary);
+
+      &:hover {
+        transform: scale(1.1);
+        color: var(--accent-primary);
+      }
+
+      svg {
+        fill: currentColor;
+      }
+    }
+
+    .social-icon {
+      color: var(--text-primary);
+      
+      &:hover {
+        color: var(--accent-primary);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header-toolbar {
+    .toolbar-container {
+      flex-wrap: wrap;
+    }
+
+    .nav-menu {
+      order: 3;
+      width: 100%;
+      margin: 10px 0 0 0;
+      flex-wrap: wrap;
+      gap: 5px;
+
+      button {
+        font-size: 12px;
+      }
+    }
+
+    .logo {
+      flex: 1;
+
+      .logo-text {
+        font-size: 18px;
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+.skills-section {
+  padding: 80px 20px;
+  background: var(--bg-primary);
+  position: relative;
+  transition: background-color 0.3s ease;
+
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: var(--text-primary);
+
+    mat-icon {
+      font-size: 40px;
+      width: 40px;
+      height: 40px;
+      color: var(--accent-primary);
+    }
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+
+    .skill-card {
+      border-radius: 15px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      background: var(--bg-card);
+
+      &:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--card-hover-shadow);
+      }
+
+      mat-card-header {
+        background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+        padding: 20px;
+        color: white;
+
+        mat-card-title {
+          color: white;
+          font-size: 20px;
+          font-weight: 600;
+          margin: 0;
+        }
+      }
+
+      mat-card-content {
+        padding: 20px;
+      }
+
+      .chips-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        mat-chip {
+          background: var(--chip-bg);
+          color: var(--chip-text);
+          border: 1px solid var(--border-color);
+          font-size: 13px;
+
+          &:hover {
+            background: var(--accent-primary);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-section {
+    padding: 40px 15px;
+
+    .section-title {
+      font-size: 28px;
+      gap: 10px;
+
+      mat-icon {
+        font-size: 32px;
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+}
