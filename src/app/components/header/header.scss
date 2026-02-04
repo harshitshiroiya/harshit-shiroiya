@@ -7,21 +7,22 @@
   transition: background-color 0.3s ease;
 
   .toolbar-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 clamp(12px, 2vw, 40px);
+    min-height: clamp(56px, 6vw, 64px);
   }
 
   .logo {
-    font-size: 24px;
+    font-size: clamp(18px, 2vw, 28px);
     font-weight: 600;
     display: flex;
     align-items: center;
-
+    z-index: 1001;
     .logo-text {
       background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
       -webkit-background-clip: text;
@@ -30,90 +31,73 @@
     }
   }
 
+  .mobile-menu-toggle { display: none; z-index: 1001; color: var(--text-primary); }
+
   .nav-menu {
     flex: 1;
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin: 0 40px;
-
+    gap: clamp(4px, 1vw, 12px);
+    margin: 0 clamp(15px, 3vw, 40px);
     button {
       font-weight: 500;
       letter-spacing: 0.5px;
       transition: all 0.3s ease;
       color: var(--text-primary);
-
-      &:hover {
-        color: var(--accent-primary);
-      }
+      padding: clamp(6px, 1vw, 10px) clamp(10px, 1.5vw, 20px);
+      font-size: clamp(12px, 1.2vw, 15px);
+      &:hover { color: var(--accent-primary); }
     }
   }
 
   .header-actions {
     display: flex;
-    gap: 10px;
+    gap: clamp(2px, 0.5vw, 8px);
     align-items: center;
-
     .theme-toggle {
       color: var(--text-primary);
       transition: all 0.3s ease;
-
-      &:hover {
-        color: var(--accent-primary);
-        transform: rotate(180deg);
-      }
+      &:hover { color: var(--accent-primary); transform: rotate(180deg); }
     }
-
     a {
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
       color: var(--text-primary);
-
-      &:hover {
-        transform: scale(1.1);
-        color: var(--accent-primary);
-      }
-
-      svg {
-        fill: currentColor;
-      }
+      &:hover { transform: scale(1.1); color: var(--accent-primary); }
+      svg { fill: currentColor; }
     }
-
-    .social-icon {
-      color: var(--text-primary);
-      
-      &:hover {
-        color: var(--accent-primary);
-      }
-    }
+    .social-icon { color: var(--text-primary); &:hover { color: var(--accent-primary); } }
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .header-toolbar {
-    .toolbar-container {
-      flex-wrap: wrap;
-    }
-
+    .mobile-menu-toggle { display: flex; order: 2; }
+    .header-actions { order: 3; margin-left: 8px; .social-icon { display: none; } }
     .nav-menu {
-      order: 3;
-      width: 100%;
-      margin: 10px 0 0 0;
-      flex-wrap: wrap;
-      gap: 5px;
-
+      display: none;
+      position: fixed;
+      top: 56px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-primary);
+      flex-direction: column;
+      padding: 20px;
+      gap: 8px;
+      margin: 0;
+      z-index: 999;
+      &.mobile-open { display: flex; }
       button {
-        font-size: 12px;
-      }
-    }
-
-    .logo {
-      flex: 1;
-
-      .logo-text {
+        width: 100%;
+        text-align: left;
         font-size: 18px;
+        padding: 16px 20px;
+        border-radius: 12px;
+        background: var(--bg-secondary);
+        &:hover { background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%); color: white; }
       }
     }
   }

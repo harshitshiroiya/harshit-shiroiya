@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,6 +16,7 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class Header {
   appConfig = appConfig;
+  isMobileMenuOpen = signal(false);
 
   constructor(public themeService: ThemeService) {}
 
@@ -24,9 +25,14 @@ export class Header {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    this.isMobileMenuOpen.set(false);
   }
 
   toggleTheme(): void {
     this.themeService.toggleTheme();
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen.update(v => !v);
   }
 }

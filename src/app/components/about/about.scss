@@ -1,172 +1,105 @@
 .about-section {
-  padding: 80px 20px;
+  padding: clamp(40px, 8vw, 120px) clamp(16px, 4vw, 60px);
   background: var(--bg-secondary);
   position: relative;
   transition: background-color 0.3s ease;
 
-  .section-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  .section-container { max-width: 1400px; margin: 0 auto; }
 
   .section-title {
     text-align: center;
-    font-size: 36px;
+    font-size: clamp(24px, 4vw, 48px);
     font-weight: 700;
-    margin-bottom: 60px;
+    margin-bottom: clamp(30px, 5vw, 60px);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: clamp(10px, 1vw, 15px);
     color: var(--text-primary);
-
-    mat-icon {
-      font-size: 40px;
-      width: 40px;
-      height: 40px;
-      color: var(--accent-primary);
-    }
+    mat-icon { font-size: clamp(32px, 4vw, 56px); width: clamp(32px, 4vw, 56px); height: clamp(32px, 4vw, 56px); color: var(--accent-primary); }
   }
 
   .about-card {
-    border-radius: 15px;
+    border-radius: clamp(15px, 1.5vw, 20px);
     box-shadow: var(--card-shadow);
-    margin-bottom: 40px;
+    margin-bottom: clamp(20px, 3vw, 40px);
     background: var(--bg-card);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 
-    mat-card-content {
-      padding: 40px;
-    }
+    mat-card-content { padding: clamp(20px, 4vw, 60px); }
 
     .about-text {
-      font-size: 18px;
+      font-size: clamp(14px, 1.3vw, 20px);
       line-height: 1.8;
       color: var(--text-secondary);
-      margin-bottom: 40px;
+      margin-bottom: clamp(20px, 3vw, 40px);
       text-align: justify;
     }
 
     .about-highlights {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(15px, 2vw, 30px);
+      margin-top: clamp(20px, 3vw, 40px);
 
       .highlight {
-        padding: 30px;
+        padding: clamp(20px, 2.5vw, 35px);
         background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-        border-radius: 10px;
+        border-radius: 15px;
         color: white;
         text-align: center;
         transition: all 0.3s ease;
-
-        &:hover {
-          transform: translateY(-5px);
-          box-shadow: var(--card-hover-shadow);
-        }
-
-        mat-icon {
-          font-size: 48px;
-          width: 48px;
-          height: 48px;
-          margin-bottom: 15px;
-          color: white;
-        }
-
-        h3 {
-          font-size: 18px;
-          font-weight: 600;
-          margin-bottom: 10px;
-        }
-
-        p {
-          font-size: 14px;
-          opacity: 0.9;
-        }
+        &:hover { transform: translateY(-8px); box-shadow: var(--card-hover-shadow); }
+        mat-icon { font-size: clamp(36px, 4vw, 52px); width: clamp(36px, 4vw, 52px); height: clamp(36px, 4vw, 52px); margin-bottom: clamp(12px, 1.5vw, 18px); color: white; }
+        h3 { font-size: clamp(15px, 1.5vw, 20px); font-weight: 600; margin-bottom: clamp(8px, 1vw, 12px); }
+        p { font-size: clamp(13px, 1.2vw, 15px); opacity: 0.9; }
       }
     }
 
     .fun-facts {
-      margin-top: 40px;
-      padding-top: 30px;
+      margin-top: clamp(30px, 4vw, 50px);
+      padding-top: clamp(25px, 3vw, 40px);
       border-top: 1px solid var(--border-color);
 
       .fun-facts-title {
         display: flex;
         align-items: center;
         gap: 10px;
-        font-size: 22px;
+        font-size: clamp(20px, 2vw, 24px);
         font-weight: 600;
         color: var(--text-primary);
-        margin-bottom: 25px;
-
-        mat-icon {
-          color: var(--accent-primary);
-        }
+        margin-bottom: clamp(20px, 2vw, 25px);
+        mat-icon { color: var(--accent-primary); }
       }
 
       .fun-facts-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: clamp(12px, 1.5vw, 20px);
 
         .fun-fact {
           display: flex;
           align-items: center;
-          gap: 15px;
-          padding: 20px;
+          gap: clamp(12px, 1vw, 15px);
+          padding: clamp(16px, 1.5vw, 20px);
           background: var(--bg-secondary);
           border-radius: 12px;
           border: 1px solid var(--border-color);
           transition: all 0.3s ease;
-
-          &:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--card-shadow);
-            border-color: var(--accent-primary);
-          }
-
-          .emoji {
-            font-size: 32px;
-            flex-shrink: 0;
-          }
-
-          p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin: 0;
-            line-height: 1.5;
-          }
+          &:hover { transform: translateY(-3px); box-shadow: var(--card-shadow); border-color: var(--accent-primary); }
+          .emoji { font-size: clamp(28px, 2.5vw, 32px); flex-shrink: 0; }
+          p { font-size: 14px; color: var(--text-secondary); margin: 0; line-height: 1.5; }
         }
       }
     }
   }
 }
 
-@media (max-width: 768px) {
-  .about-section {
-    padding: 40px 15px;
-
-    .section-title {
-      font-size: 28px;
-      gap: 10px;
-
-      mat-icon {
-        font-size: 32px;
-        width: 32px;
-        height: 32px;
-      }
-    }
-
-    .about-card {
-      mat-card-content {
-        padding: 20px;
-      }
-
-      .about-text {
-        font-size: 16px;
-      }
-    }
+@media (max-width: 1023px) { .about-section .about-card .fun-facts .fun-facts-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 767px) {
+  .about-section .about-card {
+    .about-text { text-align: left; }
+    .about-highlights { grid-template-columns: 1fr; }
+    .fun-facts .fun-facts-grid { grid-template-columns: 1fr; }
   }
 }

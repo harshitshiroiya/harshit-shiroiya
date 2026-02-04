@@ -3,7 +3,13 @@
     <div class="logo" (click)="scrollToSection('home')" style="cursor: pointer;">
       <span class="logo-text">{{ appConfig.appName }}</span>
     </div>
-    <nav class="nav-menu">
+    
+    <!-- Mobile menu toggle -->
+    <button mat-icon-button class="mobile-menu-toggle" (click)="toggleMobileMenu()">
+      <mat-icon>{{ isMobileMenuOpen() ? 'close' : 'menu' }}</mat-icon>
+    </button>
+    
+    <nav class="nav-menu" [class.mobile-open]="isMobileMenuOpen()">
       <button mat-button (click)="scrollToSection('about')">About</button>
       <button mat-button (click)="scrollToSection('skills')">Skills</button>
       <button mat-button (click)="scrollToSection('experience')">Experience</button>
