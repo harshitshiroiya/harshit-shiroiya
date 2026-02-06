@@ -1,9 +1,9 @@
 .hero {
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: clamp(70px, 8vw, 100px) clamp(16px, 4vw, 60px);
+  padding: clamp(60px, 6vw, 80px) clamp(16px, 4vw, 60px);
   background: var(--hero-bg);
   position: relative;
   overflow: hidden;
