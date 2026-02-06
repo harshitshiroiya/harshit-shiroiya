@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ResumeService } from '../../services/resume.service';
 import { PersonalInfo } from '../../models/resume.model';
 import { appConfig } from '../../config/app.config';
@@ -9,7 +10,7 @@ import { appConfig } from '../../config/app.config';
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatTooltipModule],
   templateUrl: './hero.html',
   styleUrl: './hero.scss',
 })
