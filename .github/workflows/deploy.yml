@@ -51,3 +51,4 @@ jobs:
           resourceGroup: ${{ env.AZURE_RESOURCE_GROUP }}
           containerAppName: ${{ env.AZURE_CONTAINER_APP }}
           imageToDeploy: docker.io/${{ env.DOCKER_IMAGE }}:${{ github.sha }}
+          targetPort: 4000

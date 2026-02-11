@@ -20,13 +20,16 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Install serve to run the static files
-RUN npm install -g serve
-
-# Copy built application from builder
+# Copy built application from builder (includes server + browser bundles)
 COPY --from=builder /app/dist ./dist
 
-EXPOSE 4200
+# Copy package files for production dependencies
+COPY --from=builder /app/package*.json ./
 
-# Serve the Angular app
-CMD ["serve", "-s", "dist/resume-website/browser", "-l", "4200"]
+# Install only production dependencies
+RUN npm ci --omit=dev
+
+EXPOSE 4000
+
+# Run the Angular SSR server (enables visitor tracking middleware)
+CMD ["node", "dist/resume-website/server/server.mjs"]

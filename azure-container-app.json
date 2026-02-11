@@ -14,6 +14,10 @@
           {
             "name": "NODE_ENV",
             "value": "production"
+          },
+          {
+            "name": "PORT",
+            "value": "4000"
           }
         ]
       }
@@ -27,7 +31,7 @@
     "activeRevisionsMode": "single",
     "ingress": {
       "external": true,
-      "targetPort": 4200,
+      "targetPort": 4000,
       "allowInsecure": false,
       "traffic": [
         {
