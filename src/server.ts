@@ -159,7 +159,29 @@ app.use((req, res, next) => {
     .then((response) =>
       response ? writeResponseToNodeResponse(response, res) : next(),
     )
-    .catch(next);
+    .catch((err) => {
+      const ip = req.headers['x-forwarded-for']?.toString().split(',')[0].trim()
+        || req.headers['x-real-ip']?.toString()
+        || req.socket.remoteAddress
+        || 'unknown';
+      console.error(`[ERROR] IP: ${ip} | Page: ${req.originalUrl} | ${err?.message || err}`);
+      next(err);
+    });
+});
+
+/**
+ * Global error handler - catches unhandled errors and logs them with [ERROR] tag.
+ * Azure Monitor alert triggers on [ERROR] in logs.
+ */
+app.use((err: any, req: express.Request, res: express.Response, _next: express.NextFunction) => {
+  const ip = req.headers['x-forwarded-for']?.toString().split(',')[0].trim()
+    || req.headers['x-real-ip']?.toString()
+    || req.socket.remoteAddress
+    || 'unknown';
+  console.error(`[ERROR] Unhandled | IP: ${ip} | Page: ${req.originalUrl} | ${err?.stack || err?.message || err}`);
+  if (!res.headersSent) {
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 /**
@@ -181,3 +203,15 @@ if (isMainModule(import.meta.url) || process.env['pm_id']) {
  * Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
  */
 export const reqHandler = createNodeRequestHandler(app);
+
+/**
+ * Process-level error handlers - catch unhandled exceptions and rejections.
+ * Logged with [ERROR] tag so Azure Monitor alert picks them up.
+ */
+process.on('uncaughtException', (err) => {
+  console.error(`[ERROR] uncaughtException | ${err?.stack || err?.message || err}`);
+});
+
+process.on('unhandledRejection', (reason) => {
+  console.error(`[ERROR] unhandledRejection | ${reason}`);
+});

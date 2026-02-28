@@ -1,0 +1,49 @@
+name: Deploy Azure Monitoring Alerts
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'infra/**'
+  workflow_dispatch:
+
+env:
+  AZURE_RESOURCE_GROUP: harshitshiroiya111_rg_8940
+  LOG_ANALYTICS_WORKSPACE: workspace-harshitshiroiya111rg8940Yaw8
+
+jobs:
+  deploy-alerts:
+    name: Deploy Bicep Alerts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Bicep template
+        uses: azure/arm-deploy@v2
+        with:
+          resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
+          template: infra/alerts.bicep
+          parameters: >
+            logAnalyticsWorkspaceName=${{ env.LOG_ANALYTICS_WORKSPACE }}
+            alertEmail=harshitshiroiya@gmail.com
+            containerAppName=harshit-shiroiya
+          failOnStdErr: false
+          deploymentName: portfolio-alerts-${{ github.run_number }}
+
+      - name: Show deployment outputs
+        run: |
+          echo "✅ Azure Monitor Alerts deployed successfully!"
+          echo "📧 Email alerts configured for: harshitshiroiya@gmail.com"
+          echo ""
+          echo "Alerts created:"
+          echo "  1. Error Detection Alert (Sev1) - checks every 5 min"
+          echo "  2. New Visitor Surge Alert (Sev3) - >5 new IPs in 15 min"
+          echo "  3. Daily Visitor Summary (Sev4) - daily digest of new IPs"
