@@ -187,7 +187,7 @@ resource dailyVisitorSummary 'Microsoft.Insights/scheduledQueryRules@2023-03-15-
         }
       ]
     }
-    autoMitigate: true
+    autoMitigate: false
     actions: {
       actionGroups: [
         actionGroup.id
