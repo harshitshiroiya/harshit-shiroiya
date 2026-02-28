@@ -2,7 +2,8 @@
 // Azure Monitor Alerts for harshitshiroiya.com
 // - Error alert: fires when any [ERROR] log is detected
 // - New visitor alert: fires when >5 new unique IPs visit in a 15-min window
-// Both alerts email harshitshiroiya@gmail.com with IP details
+// - Daily visitor summary: daily digest of new IPs
+// All alerts email harshitshiroiya@gmail.com with IP details
 // ============================================================================
 
 @description('Resource group location')
@@ -16,6 +17,23 @@ param alertEmail string = 'harshitshiroiya@gmail.com'
 
 @description('Container app name for filtering logs')
 param containerAppName string = 'harshit-shiroiya'
+
+// ============================================================================
+// KQL query variables (regular strings support ${} interpolation in Bicep)
+// ============================================================================
+var errorQuery = 'ContainerAppConsoleLogs_CL | where ContainerAppName_s == "${containerAppName}" | where Log_s has "[ERROR]" or Log_s has "ECONNREFUSED" or Log_s has "ENOTFOUND" or Log_s has "uncaughtException" or Log_s has "unhandledRejection" | extend IP = extract(@"IP:\\s([^\\s|]+)", 1, Log_s) | extend ErrorMessage = Log_s | project TimeGenerated, ErrorMessage, IP'
+
+var newVisitorQuery = 'ContainerAppConsoleLogs_CL | where ContainerAppName_s == "${containerAppName}" | where Log_s has "[VISITOR]" and Log_s has "New: true" | extend IP = extract(@"IP:\\s([^\\s|]+)", 1, Log_s) | extend Device = extract(@"\\|\\s(\\w+/\\w+/\\w+)\\s\\|", 1, Log_s) | where isnotempty(IP) | summarize NewIPCount = dcount(IP), IPList = make_set(IP, 100), DeviceList = make_set(Device, 100) by bin(TimeGenerated, 15m) | where NewIPCount > 5 | extend IPAddresses = strcat_array(IPList, ", ") | extend Devices = strcat_array(DeviceList, ", ") | project TimeGenerated, NewIPCount, IPAddresses, Devices'
+
+var dailyVisitorQuery = 'ContainerAppConsoleLogs_CL | where ContainerAppName_s == "${containerAppName}" | where Log_s has "[VISITOR]" and Log_s has "New: true" | extend IP = extract(@"IP:\\s([^\\s|]+)", 1, Log_s) | extend Device = extract(@"\\|\\s(\\w+/\\w+/\\w+)\\s\\|", 1, Log_s) | where isnotempty(IP) | summarize NewIPCount = dcount(IP), IPList = make_set(IP, 200) by bin(TimeGenerated, 1d) | where NewIPCount > 0'
+
+var dashboardUrl = 'https://portal.azure.com/#@/resource${logAnalyticsWorkspace.id}/logs'
+
+var investigateErrorKql = 'ContainerAppConsoleLogs_CL | where ContainerAppName_s == "${containerAppName}" | where Log_s has "[ERROR]" | project TimeGenerated, Log_s | order by TimeGenerated desc | take 20'
+
+var investigateVisitorKql = 'ContainerAppConsoleLogs_CL | where ContainerAppName_s == "${containerAppName}" | where Log_s has "[VISITOR]" and Log_s has "New: true" | extend IP = extract(@"IP:\\s([^\\s|]+)", 1, Log_s) | extend Device = extract(@"\\|\\s(\\w+/\\w+/\\w+)\\s\\|", 1, Log_s) | summarize count() by IP, Device | order by count_ desc'
+
+var investigateDailyKql = 'ContainerAppConsoleLogs_CL | where ContainerAppName_s == "${containerAppName}" | where Log_s has "[VISITOR]" and Log_s has "New: true" | where TimeGenerated > ago(1d) | extend IP = extract(@"IP:\\s([^\\s|]+)", 1, Log_s) | extend Device = extract(@"\\|\\s(\\w+/\\w+/\\w+)\\s\\|", 1, Log_s) | summarize count() by IP, Device | order by count_ desc'
 
 // ============================================================================
 // Reference existing Log Analytics workspace
@@ -45,33 +63,26 @@ resource actionGroup 'Microsoft.Insights/actionGroups@2023-09-01-preview' = {
 
 // ============================================================================
 // Alert 1: Error Detection
-// Fires when any error log ([ERROR] or console.error) is detected
-// Includes the error message and IP (if available) in the email
+// Fires when any error log ([ERROR]) is detected in the container app
+// Email includes custom properties with KQL to investigate + dashboard link
 // ============================================================================
 resource errorAlert 'Microsoft.Insights/scheduledQueryRules@2023-03-15-preview' = {
   name: 'alert-portfolio-errors'
   location: location
   properties: {
     displayName: 'Portfolio Website - Error Detected'
-    description: 'Fires when an error is logged in the container app. Check the custom properties for error details and IP addresses.'
-    severity: 1 // Sev1 = Error
+    description: 'Fires when an error is logged in the container app. Check the custom properties for the KQL query to investigate and see IP addresses.'
+    severity: 1
     enabled: true
-    evaluationFrequency: 'PT5M' // Check every 5 minutes
-    windowSize: 'PT5M'          // Look at last 5 minutes of data
+    evaluationFrequency: 'PT5M'
+    windowSize: 'PT5M'
     scopes: [
       logAnalyticsWorkspace.id
     ]
     criteria: {
       allOf: [
         {
-          query: '''
-            ContainerAppConsoleLogs_CL
-            | where ContainerAppName_s == "${containerAppName}"
-            | where Log_s has "[ERROR]" or Log_s has "Error" or Log_s has "ECONNREFUSED" or Log_s has "ENOTFOUND" or Log_s has "uncaughtException" or Log_s has "unhandledRejection"
-            | extend IP = extract(@"IP:\s([^\s|]+)", 1, Log_s)
-            | extend ErrorMessage = Log_s
-            | project TimeGenerated, ErrorMessage, IP
-          '''
+          query: errorQuery
           timeAggregation: 'Count'
           operator: 'GreaterThan'
           threshold: 0
@@ -90,8 +101,8 @@ resource errorAlert 'Microsoft.Insights/scheduledQueryRules@2023-03-15-preview' 
       ]
       customProperties: {
         'Alert Type': 'Error in Portfolio Website'
-        'Dashboard': 'https://portal.azure.com/#@/resource${logAnalyticsWorkspace.id}/logs'
-        'KQL to investigate': 'ContainerAppConsoleLogs_CL | where ContainerAppName_s == "${containerAppName}" | where Log_s has "[ERROR]" or Log_s has "Error" | project TimeGenerated, Log_s | order by TimeGenerated desc | take 20'
+        Dashboard: dashboardUrl
+        'KQL to investigate': investigateErrorKql
       }
     }
   }
@@ -100,41 +111,25 @@ resource errorAlert 'Microsoft.Insights/scheduledQueryRules@2023-03-15-preview' 
 // ============================================================================
 // Alert 2: New Visitor Surge
 // Fires when more than 5 new unique IPs visit within a 15-minute window
-// Includes all the new IP addresses in the email custom properties
+// KQL query extracts IP list and device info, included via custom properties
 // ============================================================================
 resource newVisitorAlert 'Microsoft.Insights/scheduledQueryRules@2023-03-15-preview' = {
   name: 'alert-portfolio-new-visitors'
   location: location
   properties: {
     displayName: 'Portfolio Website - 5+ New Visitors Detected'
-    description: 'More than 5 new unique IP addresses visited the website in the last 15 minutes. Check custom properties for the IP list.'
-    severity: 3 // Sev3 = Informational
+    description: 'More than 5 new unique IP addresses visited the website in the last 15 minutes. Check custom properties for the KQL query to see all IPs.'
+    severity: 3
     enabled: true
-    evaluationFrequency: 'PT15M' // Check every 15 minutes
-    windowSize: 'PT15M'          // Look at last 15 minutes of data
+    evaluationFrequency: 'PT15M'
+    windowSize: 'PT15M'
     scopes: [
       logAnalyticsWorkspace.id
     ]
     criteria: {
       allOf: [
         {
-          query: '''
-            ContainerAppConsoleLogs_CL
-            | where ContainerAppName_s == "${containerAppName}"
-            | where Log_s has "[VISITOR]" and Log_s has "New: true"
-            | extend IP = extract(@"IP:\s([^\s|]+)", 1, Log_s)
-            | extend Device = extract(@"\|\s(\w+/\w+/\w+)\s\|", 1, Log_s)
-            | where isnotempty(IP)
-            | summarize
-                NewIPCount = dcount(IP),
-                IPList = make_set(IP, 100),
-                DeviceList = make_set(Device, 100)
-              by bin(TimeGenerated, 15m)
-            | where NewIPCount > 5
-            | extend IPAddresses = strcat_array(IPList, ", ")
-            | extend Devices = strcat_array(DeviceList, ", ")
-            | project TimeGenerated, NewIPCount, IPAddresses, Devices
-          '''
+          query: newVisitorQuery
           timeAggregation: 'Count'
           operator: 'GreaterThan'
           threshold: 0
@@ -153,46 +148,34 @@ resource newVisitorAlert 'Microsoft.Insights/scheduledQueryRules@2023-03-15-prev
       ]
       customProperties: {
         'Alert Type': 'New Visitor Surge on Portfolio Website'
-        'Dashboard': 'https://portal.azure.com/#@/resource${logAnalyticsWorkspace.id}/logs'
-        'KQL to see IPs': 'ContainerAppConsoleLogs_CL | where ContainerAppName_s == "${containerAppName}" | where Log_s has "[VISITOR]" and Log_s has "New: true" | extend IP = extract(@"IP:\\s([^\\s|]+)", 1, Log_s) | extend Device = extract(@"\\|\\s(\\w+/\\w+/\\w+)\\s\\|", 1, Log_s) | summarize count() by IP, Device | order by count_ desc'
+        Dashboard: dashboardUrl
+        'KQL to see IPs': investigateVisitorKql
       }
     }
   }
 }
 
 // ============================================================================
-// Alert 3: All Visitor Summary (Daily digest of new IPs with addresses)
-// Fires once per day if there were any new visitors — includes IP list
+// Alert 3: Daily Visitor Summary
+// Fires once per day if there were any new visitors
 // ============================================================================
 resource dailyVisitorSummary 'Microsoft.Insights/scheduledQueryRules@2023-03-15-preview' = {
   name: 'alert-portfolio-daily-visitors'
   location: location
   properties: {
     displayName: 'Portfolio Website - Daily New Visitor Summary'
-    description: 'Daily summary of all new visitor IPs. Check custom properties for the full IP list and KQL query.'
-    severity: 4 // Sev4 = Verbose/Info
+    description: 'Daily summary of all new visitor IPs. Check custom properties for the KQL query to see the full IP list.'
+    severity: 4
     enabled: true
-    evaluationFrequency: 'P1D'  // Check once per day
-    windowSize: 'P1D'           // Look at last 24 hours
+    evaluationFrequency: 'P1D'
+    windowSize: 'P1D'
     scopes: [
       logAnalyticsWorkspace.id
     ]
     criteria: {
       allOf: [
         {
-          query: '''
-            ContainerAppConsoleLogs_CL
-            | where ContainerAppName_s == "${containerAppName}"
-            | where Log_s has "[VISITOR]" and Log_s has "New: true"
-            | extend IP = extract(@"IP:\s([^\s|]+)", 1, Log_s)
-            | extend Device = extract(@"\|\s(\w+/\w+/\w+)\s\|", 1, Log_s)
-            | where isnotempty(IP)
-            | summarize
-                NewIPCount = dcount(IP),
-                IPList = make_set(IP, 200)
-              by bin(TimeGenerated, 1d)
-            | where NewIPCount > 0
-          '''
+          query: dailyVisitorQuery
           timeAggregation: 'Count'
           operator: 'GreaterThan'
           threshold: 0
@@ -211,7 +194,7 @@ resource dailyVisitorSummary 'Microsoft.Insights/scheduledQueryRules@2023-03-15-
       ]
       customProperties: {
         'Alert Type': 'Daily Visitor Summary'
-        'KQL to see all IPs today': 'ContainerAppConsoleLogs_CL | where ContainerAppName_s == "${containerAppName}" | where Log_s has "[VISITOR]" and Log_s has "New: true" | where TimeGenerated > ago(1d) | extend IP = extract(@"IP:\\s([^\\s|]+)", 1, Log_s) | extend Device = extract(@"\\|\\s(\\w+/\\w+/\\w+)\\s\\|", 1, Log_s) | summarize count() by IP, Device | order by count_ desc'
+        'KQL to see all IPs today': investigateDailyKql
       }
     }
   }
