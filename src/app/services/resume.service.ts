@@ -15,34 +15,46 @@ export class ResumeService {
       phone: appConfig.socialMedia.phone,
       location: 'Cincinnati, USA',
       profileImage: 'Harshit.jpg',
-      summary: 'Software Engineer with expertise in building scalable clinical and enterprise applications using Angular, .NET Core, and Azure cloud services. Experienced in microservices architecture, CI/CD pipelines, and mentoring development teams.',
+      summary: 'Software Engineer with expertise in building scalable clinical and enterprise applications using Angular, .NET Core, and Azure cloud services. Experienced in microservices and micro-frontend architecture, distributed caching, event-driven systems, CI/CD pipelines, and mentoring development teams.',
       socialLinks: [
         { name: 'GitHub', url: appConfig.socialMedia.github, icon: 'github' },
         { name: 'LinkedIn', url: appConfig.socialMedia.linkedin, icon: 'linkedin' },
         { name: 'Twitter', url: appConfig.socialMedia.twitter, icon: 'twitter' }
       ]
     },
-    professional_summary: 'Results-driven Software Engineer with experience in designing and implementing scalable web applications. Expertise in Angular, .NET Core, C#, Azure cloud services, and microservices architecture. Proven track record of reducing API response times by 35%, improving scalability by 40%, and mentoring junior developers. Committed to delivering high-quality, maintainable code and fostering collaborative development environments.',
+    professional_summary: 'Results-driven Software Engineer with experience in designing and implementing scalable web applications. Expertise in Angular, .NET Core, C#, Azure cloud services (AKS, Redis, Service Bus), and microservices architecture. Proven track record of cutting API latency by 50%, improving scalability by 40%, and mentoring junior engineers. Committed to delivering high-quality, maintainable code and fostering collaborative development environments.',
     skills: [
       {
-        category: 'Programming Languages',
-        items: ['Python', 'JavaScript', 'Java', 'C', 'TypeScript', 'C#']
+        category: 'Languages',
+        items: ['Python', 'TypeScript', 'JavaScript', 'C#', 'Java', 'C', 'PHP', 'SQL']
       },
       {
-        category: 'Web Technologies & Frameworks',
-        items: ['Angular', 'React', 'Node.js', 'Express.js', '.NET', 'Django', 'Flask', 'RESTful APIs', 'GraphQL']
+        category: 'Frontend',
+        items: ['Angular', 'RxJS', 'React', 'Vue.js', 'HTML5', 'CSS3', 'Bootstrap', 'jQuery', 'AJAX', 'Selenium']
       },
       {
-        category: 'Database & Storage',
-        items: ['MongoDB', 'PostgreSQL', 'MySQL', 'Amazon RDS', 'Amazon S3', 'DynamoDB', 'Microsoft SQL Server']
+        category: 'Backend & APIs',
+        items: ['.NET Core (C#)', 'ASP.NET', 'Node.js', 'Express.js', 'Django', 'Flask', 'GraphQL', 'RESTful APIs', 'Entity Framework', 'MVC']
       },
       {
-        category: 'DevOps & Cloud',
-        items: ['Azure', 'AWS', 'Docker', 'CI/CD', 'Jenkins', 'GitHub Actions', 'Redis', 'Memcached']
+        category: 'Cloud & DevOps',
+        items: ['Azure (AKS, Container Registry, Service Bus, Blob Storage, Monitor, App Insights, Cache for Redis)', 'AWS (S3, RDS, EC2, Lambda, CodePipeline, CodeBuild)', 'GCP', 'Docker', 'Kubernetes', 'CI/CD', 'Jenkins', 'GitHub Actions', 'Azure DevOps']
       },
       {
-        category: 'Tools & Practices',
-        items: ['Git', 'JIRA', 'Postman', 'Selenium', 'Bitbucket', 'Crucible', 'Agile/Scrum']
+        category: 'Databases',
+        items: ['SQL Server', 'PostgreSQL', 'MongoDB', 'MySQL', 'CosmosDB', 'DynamoDB', 'Amazon RDS', 'Amazon S3', 'Redis', 'Memcached']
+      },
+      {
+        category: 'Architecture',
+        items: ['Microservices', 'Micro-frontend', 'Event-Driven Architecture', 'ESB Messaging', 'Distributed Systems', 'MVC', 'Caching Strategies']
+      },
+      {
+        category: 'Tools',
+        items: ['Git', 'GitHub', 'Bitbucket', 'JIRA', 'Postman', 'Docker', 'ServiceNow', 'OAuth 2.0', 'Agile/Scrum', 'Crucible']
+      },
+      {
+        category: 'Certifications',
+        items: ['Infosys Certified Software Engineer', 'Microsoft Certified Python Programmer', 'Star Certified Cyber User']
       }
     ],
     experience: [
@@ -53,15 +65,15 @@ export class ResumeService {
         endDate: 'Present',
         location: 'Cincinnati, USA',
         current: true,
-        description: 'Developing and maintaining clinical software applications using Angular, C#, .NET Core, and Azure.',
+        description: 'Architecting and maintaining clinical software products using Angular, C#, .NET Core, and Azure cloud services.',
         achievements: [
-          'Developed and maintained 3 clinical software applications using Angular, C#, .NET Core, Entity Framework, and Microsoft SQL Server in a MVC architecture',
-          'Reduced API response time by 35% by implementing GraphQL and RESTful APIs for faster client-server communication',
-          'Optimized scalability and reduced infrastructure costs by 35% by migrating applications to Azure cloud services',
-          'Refactored a monolithic application into microservices and micro-frontend architecture, improving scalability by 40% and deployment speed by 30%',
-          'Led UI development initiatives for 3 major products, improving user experience scores by 25%',
-          'Mentored 2 junior developers on frontend development best practices',
-          'Achieved 99% alignment with business owners through effective sprint planning and communication'
+          'Architected 3 clinical software products as micro-frontend Angular applications using Angular Signals for reactive state management, eliminating redundant change-detection cycles and improving rendering performance by 40%',
+          'Engineered a version control system for clinical studies leveraging Azure Blob Storage to maintain 100% version histories across all study configurations, ensuring full audit traceability',
+          'Orchestrated containerized microservice deployments on Azure Kubernetes Service (AKS) with Azure Container Registry, boosting scalability 40%, accelerating deployment velocity 30%, and reducing infrastructure costs by 35%',
+          'Deployed a distributed caching layer using Azure Cache for Redis with .NET Core (C#) and Entity Framework, cutting API latency by 50% and reducing database load by 35% under peak workloads for 2,000+ concurrent users',
+          'Established ESB-based and event-driven microservice communication via Azure Service Bus; instrumented observability with Azure Monitor and Application Insights, reducing incident mean-time-to-detect (MTTD) by 60%',
+          'Introduced GraphQL alongside RESTful APIs for clinical dashboards, cutting API response time by 35% and eliminating over-fetching; refactored monolithic application into microservices, improving scalability and maintainability',
+          'Led sprint planning across 3 clinical products, achieving 99% alignment with business owners on priorities and timelines; mentored 2 junior engineers and boosted UX satisfaction scores by 25%'
         ]
       },
       {
@@ -70,11 +82,12 @@ export class ResumeService {
         startDate: 'Aug 2022',
         endDate: 'May 2023',
         location: 'Bloomington, USA',
-        description: 'Conducted research and data analysis on social media platforms.',
+        description: 'Architected distributed data pipelines and NLP-based research tools for large-scale social media analysis.',
         achievements: [
-          'Crawled data from 164 Scientists\' timelines using Twitter API, YouTube API, and Reddit API',
-          'Extracted and processed JSON responses for data analysis',
-          'Cleaned, parsed, and segmented tweets to analyze word frequency and identify emotion-related hashtags'
+          'Architected a distributed data ingestion pipeline integrating Twitter, YouTube, and Reddit APIs to process high-volume sentiment data for 164 entities, aiding 1,000+ researchers with NLP-based emotion classification',
+          'Optimized data workflows with advanced algorithms and SQL pipelines, reducing processing time by 30% and enabling insights on medication efficacy for 10,000+ patients',
+          'Introduced caching and async processing alongside Azure Data Lake Storage and Azure Service Bus for large-scale data management and reliable service communication, reducing latency by 50%',
+          'Designed optimized MongoDB schemas for time-series social data with compound indexes, enabling sub-second querying'
         ]
       },
       {
@@ -83,51 +96,34 @@ export class ResumeService {
         startDate: 'May 2022',
         endDate: 'Dec 2022',
         location: 'Indianapolis, USA',
-        description: 'Developed full-stack web applications with focus on accessibility and cloud deployment.',
+        description: 'Built scalable full-stack web applications with focus on accessibility, cloud deployment, and marketing automation workflows.',
         achievements: [
-          'Ensured WCAG 2.1 compliance to improve web accessibility for users with disabilities',
-          'Built backend services with .NET (C#) and developed responsive frontends using Angular.js and Vue.js',
-          'Managed PostgreSQL for storage and backups, and used Memcached for high-speed caching',
-          'Utilized AWS S3 for static content and RDS for PostgreSQL hosting, improving scalability by 30%',
-          'Automated CI/CD pipelines with AWS CodePipeline and CodeBuild, reducing release cycles by 25%'
-        ]
-      },
-      {
-        company: 'V.H Lakhi Group',
-        position: 'Data Analyst Intern',
-        startDate: 'Dec 2019',
-        endDate: 'Feb 2020',
-        location: 'Mumbai, India',
-        description: 'Analyzed sales data and implemented machine learning algorithms for business insights.',
-        achievements: [
-          'Analyzed 2018-19 sales data using Python to identify key trends and patterns',
-          'Implemented 6 machine learning algorithms, improving insights and helping boost future sales by 18%'
+          'Built scalable .NET Core (C#) backend microservices and WCAG 2.1-compliant frontends using Angular and Vue.js, integrating AWS S3 and Amazon RDS (PostgreSQL) to support a 30% scalability improvement across high-traffic marketing automation workflows',
+          'Configured Memcached server-side caching layer, reducing database round-trips by 40% and boosting throughput for peak-load marketing campaigns serving thousands of concurrent users',
+          'Automated end-to-end CI/CD pipelines using AWS CodePipeline and CodeBuild, cutting release cycle time by 25% and enabling faster, more reliable feature deployments across environments'
         ]
       }
     ],
     projects: [
       {
-        title: 'FitnessDial',
-        description: 'A health wellness system to monitor an individual\'s everyday activity with OAuth 2.0 authentication, video streaming, real-time chat, subscription management, and recommendation features.',
+        title: 'Distributed Health Telemetry System',
+        description: 'A cloud-native health monitoring platform on AWS (EC2, S3, Lambda) with OAuth 2.0 authentication, video streaming, real-time chat, subscription management, and personalized recommendation features.',
         technologies: ['Node.js', 'React', 'MongoDB', 'Angular', 'AWS', 'OAuth 2.0'],
-        github: appConfig.projects.fitnessDial.github,
-        link: appConfig.projects.fitnessDial.live,
+        link: appConfig.projects.healthTelemetry.live,
         highlights: [
-          'Implemented registration with OAuth 2.0 authentication',
-          'Built search, recommendation, video-streaming, and chatting features',
-          'Leveraged React Router to reduce application loading by 27%'
+          'Built a cloud-native health monitoring platform on AWS (EC2, S3, Lambda) with OAuth 2.0 authentication, video streaming, real-time chat, and subscription management',
+          'Leveraged React Router for client-side navigation, reducing Time to Interactive by 27%',
+          'Backed recommendations with MongoDB aggregation pipelines for personalized content delivery'
         ]
       },
       {
-        title: 'Course Outcome Attainment System',
-        description: 'An automated system to analyze course attainment, ensuring compliance with board standards and improving continuous quality assessment. Published research paper in JETIR journal.',
-        technologies: ['PHP', 'HTML', 'CSS', 'JavaScript', 'MySQL'],
-        github: appConfig.projects.courseOutcome.github,
-        link: appConfig.projects.courseOutcome.live,
+        title: 'Shipment Pricing & Configuration System',
+        description: 'A cost estimation system using Node.js and Express.js with SQL Server, featuring an admin interface for rate configuration and customer-facing visualization to streamline production planning.',
+        technologies: ['React', 'Node.js', 'Express.js', 'SQL Server', 'RESTful APIs', 'Azure', 'Chart.js'],
+        link: appConfig.projects.shipmentPricing.live,
         highlights: [
-          'Processed data from 1,600+ students and faculty for performance evaluation',
-          'Authored and presented a paper at ICSCSP 2020',
-          'Published research in JETIR journal'
+          'Engineered a cost estimation system using Node.js and Express.js with SQL Server, reducing estimation time by 95% through efficient backend logic and database optimization',
+          'Designed an admin interface for rate configuration and customer-facing visualization, reducing production planning time by 30%'
         ]
       }
     ],
@@ -136,7 +132,7 @@ export class ResumeService {
         school: 'Indiana University Bloomington',
         degree: 'Master of Science',
         field: 'Computer Science',
-        graduationDate: 'May 2023',
+        graduationDate: 'Aug 2021 - May 2023',
         gpa: '3.7/4.0',
         coursework: ['Software Engineering', 'Advanced Database', 'Applied Algorithms', 'Elements of AI', 'System Analysis and Design']
       },
@@ -144,7 +140,7 @@ export class ResumeService {
         school: 'University of Mumbai',
         degree: 'Bachelor of Engineering',
         field: 'Information Technology',
-        graduationDate: 'Jun 2021',
+        graduationDate: 'Aug 2017 - Jun 2021',
         gpa: '3.8/4.0',
         coursework: ['Operating Systems', 'Software Engineering', 'Internet Programming', 'Advanced Data Structure Algorithm']
       }

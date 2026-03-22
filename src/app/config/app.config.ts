@@ -15,14 +15,13 @@ export const appConfig = {
 
   // Project Links
   projects: {
-    fitnessDial: {
-      github: 'https://github.com/harshitshiroiya/fitness-dial',
-      live: 'https://fitness-dial.com'
+    healthTelemetry: {
+      github: 'https://github.com/harshitshiroiya/distributed-health-telemetry',
+      live: 'https://health-telemetry.com'
     },
-    courseOutcome: {
-      github: 'https://github.com/harshitshiroiya/course-outcome-system',
-      live: 'https://course-outcome.com',
-      publication: 'https://jetir.org'
+    shipmentPricing: {
+      github: 'https://github.com/harshitshiroiya/shipment-pricing-system',
+      live: 'https://shipment-pricing.com'
     }
   },
 
@@ -35,7 +34,7 @@ export const appConfig = {
 
   // Application Metadata
   appName: 'Harshit Shiroiya',
-  appDescription: 'Software Engineer | Full Stack Developer',
+  appDescription: 'Software Engineer II | Full Stack Developer',
   currentYear: new Date().getFullYear(),
   
   // Contact Email (for form submissions)
