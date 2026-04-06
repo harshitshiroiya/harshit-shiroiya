@@ -3,58 +3,47 @@
 }
 
 main {
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 48px);
 }
 
 .footer {
   background: var(--bg-secondary);
-  color: var(--text-secondary);
+  color: var(--text-muted);
   text-align: center;
   padding: 16px 20px;
   border-top: 1px solid var(--border-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  position: sticky;
-  bottom: 0;
-  width: 100%;
-  z-index: 100;
+  transition: background-color 0.3s ease;
 
   p {
     margin: 0;
     font-size: 12px;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
   }
 
-  &:hover p { opacity: 1; }
-
   a {
-    color: inherit;
+    color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.3s ease;
-
-    &:hover {
-      color: var(--accent-primary);
-    }
+    &:hover { color: var(--accent-primary); }
   }
 }
 
 // Back to top button
 .back-to-top {
   position: fixed;
-  bottom: 60px;
+  bottom: 40px;
   right: 24px;
   z-index: 999;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
   border: none;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  color: white;
+  background: var(--bg-card);
+  color: var(--text-primary);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
@@ -67,17 +56,13 @@ main {
   }
 
   &:hover {
-    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
-  }
-
-  &.visible:hover {
-    transform: translateY(-3px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }
 
   mat-icon {
-    font-size: 24px;
-    width: 24px;
-    height: 24px;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -86,20 +71,20 @@ html {
   scroll-behavior: smooth;
 }
 
-// Custom scrollbar
+// Custom scrollbar - minimal Apple-style
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-primary);
-  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
 
   &:hover {
-    background: var(--accent-secondary);
+    background: rgba(0, 0, 0, 0.25);
   }
 }

@@ -1,105 +1,101 @@
 .about-section {
-  padding: clamp(40px, 8vw, 120px) clamp(16px, 4vw, 60px);
-  background: var(--bg-secondary);
-  position: relative;
+  padding: clamp(60px, 10vw, 140px) clamp(16px, 4vw, 60px);
+  background: var(--bg-primary);
   transition: background-color 0.3s ease;
 
-  .section-container { max-width: 1400px; margin: 0 auto; }
+  .section-container { max-width: 1200px; margin: 0 auto; }
 
   .section-title {
     text-align: center;
-    font-size: clamp(24px, 4vw, 48px);
+    font-size: clamp(28px, 4vw, 48px);
     font-weight: 700;
-    margin-bottom: clamp(30px, 5vw, 60px);
+    letter-spacing: -0.03em;
+    margin-bottom: clamp(20px, 3vw, 32px);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(10px, 1vw, 15px);
+    gap: clamp(8px, 1vw, 12px);
     color: var(--text-primary);
-    mat-icon { font-size: clamp(32px, 4vw, 56px); width: clamp(32px, 4vw, 56px); height: clamp(32px, 4vw, 56px); color: var(--accent-primary); transition: transform 0.5s ease; }
-    &:hover mat-icon { transform: rotate(10deg) scale(1.1); }
+    mat-icon {
+      font-size: clamp(28px, 3.5vw, 44px); width: clamp(28px, 3.5vw, 44px); height: clamp(28px, 3.5vw, 44px);
+      color: var(--accent-primary);
+    }
   }
 
   .about-card {
-    border-radius: clamp(15px, 1.5vw, 20px);
-    box-shadow: var(--card-shadow);
+    border-radius: 20px;
+    box-shadow: none;
     margin-bottom: clamp(20px, 3vw, 40px);
     background: var(--bg-card);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
 
-    mat-card-content { padding: clamp(20px, 4vw, 60px); }
+    mat-card-content { padding: clamp(24px, 4vw, 48px); }
 
     .about-text {
-      font-size: clamp(14px, 1.3vw, 20px);
-      line-height: 1.8;
+      font-size: clamp(15px, 1.3vw, 19px);
+      line-height: 1.7;
       color: var(--text-secondary);
       margin-bottom: clamp(20px, 3vw, 40px);
-      text-align: justify;
     }
 
     .about-highlights {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: clamp(15px, 2vw, 30px);
+      gap: clamp(12px, 2vw, 20px);
       margin-top: clamp(20px, 3vw, 40px);
 
       .highlight {
-        padding: clamp(20px, 2.5vw, 35px);
-        background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-        border-radius: 15px;
-        color: white;
+        padding: clamp(24px, 2.5vw, 32px);
+        background: var(--bg-secondary);
+        border-radius: 16px;
         text-align: center;
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        &:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--card-hover-shadow); }
+        transition: transform 0.3s ease;
+        &:hover { transform: translateY(-4px); }
         mat-icon {
-          font-size: clamp(36px, 4vw, 52px); width: clamp(36px, 4vw, 52px); height: clamp(36px, 4vw, 52px);
-          margin-bottom: clamp(12px, 1.5vw, 18px); color: white;
-          transition: transform 0.4s ease;
+          font-size: clamp(28px, 3vw, 40px); width: clamp(28px, 3vw, 40px); height: clamp(28px, 3vw, 40px);
+          margin-bottom: clamp(12px, 1.5vw, 16px);
+          color: var(--accent-primary);
         }
-        &:hover mat-icon { transform: scale(1.15) rotate(-5deg); }
-        h3 { font-size: clamp(15px, 1.5vw, 20px); font-weight: 600; margin-bottom: clamp(8px, 1vw, 12px); }
-        p { font-size: clamp(13px, 1.2vw, 15px); opacity: 0.9; }
+        h3 { font-size: clamp(15px, 1.4vw, 18px); font-weight: 600; margin-bottom: 8px; color: var(--text-primary); }
+        p { font-size: clamp(13px, 1.1vw, 15px); color: var(--text-secondary); line-height: 1.5; }
       }
     }
 
     .fun-facts {
-      margin-top: clamp(30px, 4vw, 50px);
-      padding-top: clamp(25px, 3vw, 40px);
+      margin-top: clamp(30px, 4vw, 48px);
+      padding-top: clamp(24px, 3vw, 36px);
       border-top: 1px solid var(--border-color);
 
       .fun-facts-title {
         display: flex;
         align-items: center;
-        gap: 10px;
-        font-size: clamp(20px, 2vw, 24px);
+        gap: 8px;
+        font-size: clamp(18px, 1.8vw, 22px);
         font-weight: 600;
+        letter-spacing: -0.02em;
         color: var(--text-primary);
-        margin-bottom: clamp(20px, 2vw, 25px);
+        margin-bottom: clamp(16px, 2vw, 24px);
         mat-icon { color: var(--accent-primary); }
       }
 
       .fun-facts-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: clamp(12px, 1.5vw, 20px);
+        gap: clamp(10px, 1.2vw, 16px);
 
         .fun-fact {
           display: flex;
           align-items: center;
-          gap: clamp(12px, 1vw, 15px);
-          padding: clamp(16px, 1.5vw, 20px);
+          gap: clamp(10px, 1vw, 14px);
+          padding: clamp(14px, 1.5vw, 18px);
           background: var(--bg-secondary);
           border-radius: 12px;
-          border: 1px solid var(--border-color);
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          transition: transform 0.3s ease;
           cursor: default;
-          &:hover { transform: translateY(-4px) scale(1.02); box-shadow: var(--card-shadow); border-color: var(--accent-primary); }
-          .emoji {
-            font-size: clamp(28px, 2.5vw, 32px); flex-shrink: 0;
-            transition: transform 0.3s ease;
-          }
-          &:hover .emoji { transform: scale(1.25) rotate(-10deg); }
-          p { font-size: 14px; color: var(--text-secondary); margin: 0; line-height: 1.5; }
+          &:hover { transform: translateY(-2px); }
+          .emoji { font-size: clamp(24px, 2vw, 28px); flex-shrink: 0; }
+          p { font-size: 14px; color: var(--text-secondary); margin: 0; line-height: 1.4; }
         }
       }
     }
@@ -109,7 +105,6 @@
 @media (max-width: 1023px) { .about-section .about-card .fun-facts .fun-facts-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 767px) {
   .about-section .about-card {
-    .about-text { text-align: left; }
     .about-highlights { grid-template-columns: 1fr; }
     .fun-facts .fun-facts-grid { grid-template-columns: 1fr; }
   }

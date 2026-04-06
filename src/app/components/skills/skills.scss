@@ -1,64 +1,67 @@
 .skills-section {
-  padding: clamp(40px, 8vw, 120px) clamp(16px, 4vw, 60px);
-  background: var(--bg-primary);
-  position: relative;
+  padding: clamp(60px, 10vw, 140px) clamp(16px, 4vw, 60px);
+  background: var(--bg-secondary);
   transition: background-color 0.3s ease;
 
-  .section-container { max-width: 1400px; margin: 0 auto; }
+  .section-container { max-width: 1200px; margin: 0 auto; }
 
   .section-title {
     text-align: center;
-    font-size: clamp(24px, 4vw, 48px);
+    font-size: clamp(28px, 4vw, 48px);
     font-weight: 700;
-    margin-bottom: clamp(30px, 5vw, 60px);
+    letter-spacing: -0.03em;
+    margin-bottom: clamp(30px, 5vw, 56px);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(10px, 1vw, 15px);
+    gap: clamp(8px, 1vw, 12px);
     color: var(--text-primary);
-    mat-icon { font-size: clamp(32px, 4vw, 56px); width: clamp(32px, 4vw, 56px); height: clamp(32px, 4vw, 56px); color: var(--accent-primary); transition: transform 0.5s ease; }
-    &:hover mat-icon { transform: rotate(15deg) scale(1.1); }
+    mat-icon {
+      font-size: clamp(28px, 3.5vw, 44px); width: clamp(28px, 3.5vw, 44px); height: clamp(28px, 3.5vw, 44px);
+      color: var(--accent-primary);
+    }
   }
 
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: clamp(12px, 2.5vw, 40px);
+    gap: clamp(12px, 2vw, 20px);
 
     .skill-card {
-      border-radius: clamp(15px, 1.5vw, 20px);
-      box-shadow: var(--card-shadow);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 16px;
+      box-shadow: none;
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       overflow: hidden;
       background: var(--bg-card);
-      &:hover { transform: translateY(-10px); box-shadow: var(--card-hover-shadow); }
+      &:hover { transform: translateY(-4px); box-shadow: var(--card-hover-shadow); }
 
       mat-card-header {
-        background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-        padding: clamp(14px, 2vw, 28px);
-        color: white;
-        transition: background 0.4s ease;
-        mat-card-title { color: white; font-size: clamp(16px, 1.5vw, 22px); font-weight: 600; margin: 0; }
+        padding: clamp(16px, 2vw, 24px);
+        border-bottom: 1px solid var(--border-color);
+        mat-card-title {
+          font-size: clamp(15px, 1.4vw, 18px);
+          font-weight: 600;
+          letter-spacing: -0.01em;
+          color: var(--text-primary);
+          margin: 0;
+        }
       }
 
-      &:hover mat-card-header {
-        background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 100%);
-      }
-
-      mat-card-content { padding: clamp(14px, 2vw, 28px); }
+      mat-card-content { padding: clamp(16px, 2vw, 24px); }
 
       .chips-container {
         display: flex;
         flex-wrap: wrap;
-        gap: clamp(6px, 0.8vw, 10px);
+        gap: 8px;
         mat-chip {
           background: var(--chip-bg);
-          color: var(--chip-text);
-          border: 1px solid var(--border-color);
-          font-size: clamp(11px, 1vw, 13px);
-          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+          color: var(--text-secondary);
+          border: none;
+          font-size: 13px;
+          transition: color 0.3s ease, background 0.3s ease;
           cursor: default;
-          &:hover { background: var(--accent-primary); color: white; transform: scale(1.08); box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3); }
+          &:hover { color: var(--accent-primary); background: var(--bg-secondary); }
         }
       }
     }

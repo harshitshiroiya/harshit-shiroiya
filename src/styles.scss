@@ -1,9 +1,5 @@
 
 // Include theming for Angular Material with `mat.theme()`.
-// This Sass mixin will define CSS variables that are used for styling Angular Material
-// components according to the Material 3 design spec.
-// Learn more about theming and how to use it for your application's
-// custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
 // Responsive breakpoints
@@ -15,84 +11,83 @@ $desktop: 1440px;
 html {
   height: 100%;
   scroll-behavior: smooth;
-  
+
   @include mat.theme((
     color: (
-      primary: mat.$magenta-palette,
-      tertiary: mat.$violet-palette,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
     ),
-    typography: Roboto,
+    typography: -apple-system,
     density: 0,
   ));
 }
 
-// Light theme (default) - Clean white design
+// Light theme - Apple-inspired clean design
 body.light-theme {
   --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --bg-tertiary: #f0f2f5;
+  --bg-secondary: #f5f5f7;
+  --bg-tertiary: #fbfbfd;
   --bg-card: #ffffff;
-  --bg-gradient-1: #ffffff;
-  --bg-gradient-2: #f5f7fa;
-  --text-primary: #1a1a2e;
-  --text-secondary: #4a4a68;
-  --text-muted: #6c757d;
-  --accent-primary: #667eea;
-  --accent-secondary: #764ba2;
-  --border-color: #e9ecef;
-  --shadow-color: rgba(0, 0, 0, 0.08);
-  --hero-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --hero-text: #ffffff;
-  --card-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  --card-hover-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
-  --chip-bg: #f0f0f0;
-  --chip-text: #333333;
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-muted: #86868b;
+  --accent-primary: #0071e3;
+  --accent-secondary: #147ce5;
+  --accent-hover: #0077ed;
+  --border-color: rgba(0, 0, 0, 0.06);
+  --shadow-color: rgba(0, 0, 0, 0.04);
+  --hero-bg: #f5f5f7;
+  --hero-text: #1d1d1f;
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  --card-hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --chip-bg: #f5f5f7;
+  --chip-text: #1d1d1f;
+  --header-bg: rgba(255, 255, 255, 0.72);
   color-scheme: light;
 }
 
-// Dark theme
+// Dark theme - Apple-inspired
 body.dark-theme {
-  --bg-primary: #0d1117;
-  --bg-secondary: #161b22;
-  --bg-tertiary: #21262d;
-  --bg-card: #1c2128;
-  --bg-gradient-1: #0d1117;
-  --bg-gradient-2: #161b22;
-  --text-primary: #f0f6fc;
-  --text-secondary: #c9d1d9;
-  --text-muted: #8b949e;
-  --accent-primary: #8b9cf6;
-  --accent-secondary: #a78bfa;
-  --border-color: #30363d;
-  --shadow-color: rgba(0, 0, 0, 0.4);
-  --hero-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  --hero-text: #f0f6fc;
-  --card-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-  --card-hover-shadow: 0 15px 40px rgba(139, 156, 246, 0.2);
-  --chip-bg: #30363d;
-  --chip-text: #f0f6fc;
+  --bg-primary: #000000;
+  --bg-secondary: #1d1d1f;
+  --bg-tertiary: #2d2d2f;
+  --bg-card: #1d1d1f;
+  --text-primary: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  --text-muted: #86868b;
+  --accent-primary: #2997ff;
+  --accent-secondary: #5ac8fa;
+  --accent-hover: #40a9ff;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --hero-bg: #000000;
+  --hero-text: #f5f5f7;
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  --card-hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  --chip-bg: #2d2d2f;
+  --chip-text: #f5f5f7;
+  --header-bg: rgba(0, 0, 0, 0.72);
   color-scheme: dark;
 
   @include mat.theme((
     color: (
-      primary: mat.$violet-palette,
-      tertiary: mat.$magenta-palette,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
     ),
-    typography: Roboto,
+    typography: -apple-system,
     density: 0,
   ));
 }
 
 body {
-  // Set a default background, font and text colors for the application using
-  // Angular Material's system-level CSS variables. Learn more about these
-  // variables at https://material.angular.dev/guide/system-variables
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font: var(--mat-sys-body-medium);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
   transition: background-color 0.3s ease, color 0.3s ease;
-
-  // Reset the user agent margin.
   margin: 0;
   height: 100%;
   overflow-x: hidden;
@@ -101,15 +96,15 @@ body {
 // Global responsive font sizing
 html {
   font-size: 16px;
-  
+
   @media (max-width: #{$tablet - 1}) {
     font-size: 15px;
   }
-  
+
   @media (max-width: #{$mobile - 1}) {
     font-size: 14px;
   }
-  
+
   @media (min-width: $desktop) {
     font-size: 17px;
   }
@@ -123,26 +118,22 @@ html {
   }
 }
 
-// Hide scrollbar but allow scrolling (for mobile menu)
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  &::-webkit-scrollbar { display: none; }
 }
 
-// Global image responsiveness
 img {
   max-width: 100%;
   height: auto;
 }
+
 // ===== Scroll-triggered animation classes =====
 .scroll-hidden {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .animate-fade-up {
@@ -165,23 +156,16 @@ img {
   transform: scale(1);
 }
 
-// Override initial transforms for directional variants
-.scroll-hidden.animate-fade-left {
-  opacity: 0;
-  transform: translateX(-40px);
-}
-
-// Reset for when class hasn't been applied yet
 [animationClass="animate-fade-left"].scroll-hidden {
-  transform: translateX(-40px);
+  transform: translateX(-30px);
 }
 
 [animationClass="animate-fade-right"].scroll-hidden {
-  transform: translateX(40px);
+  transform: translateX(30px);
 }
 
 [animationClass="animate-scale-in"].scroll-hidden {
-  transform: scale(0.85);
+  transform: scale(0.9);
 }
 
 // ===== Scroll progress bar =====
@@ -189,8 +173,8 @@ img {
   position: fixed;
   top: 0;
   left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  height: 2px;
+  background: var(--accent-primary);
   z-index: 1100;
   transition: width 0.1s linear;
 }
@@ -198,20 +182,20 @@ img {
 // ===== Back to top button =====
 .back-to-top {
   position: fixed;
-  bottom: 60px;
+  bottom: 40px;
   right: 24px;
   z-index: 999;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
   border: none;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  color: white;
+  background: var(--bg-card);
+  color: var(--text-primary);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
@@ -224,19 +208,12 @@ img {
   }
 
   &:hover {
-    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
-    transform: translateY(-3px);
-  }
-
-  &.visible:hover {
-    transform: translateY(-3px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }
 
   mat-icon {
-    font-size: 24px;
-    width: 24px;
-    height: 24px;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
   }
 }
-
-/* You can add global styles to this file, and also import other style files */

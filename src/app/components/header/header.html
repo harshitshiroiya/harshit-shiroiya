@@ -1,7 +1,7 @@
 <!-- Scroll progress bar -->
 <div class="scroll-progress-bar" [style.width.%]="scrollProgress()"></div>
 
-<mat-toolbar color="primary" class="header-toolbar" [class.shrunk]="headerShrunk()">
+<mat-toolbar class="header-toolbar" [class.shrunk]="headerShrunk()">
   <div class="toolbar-container">
     <div class="logo" (click)="scrollToSection('home')" style="cursor: pointer;">
       <span class="logo-text">{{ appConfig.appName }}</span>

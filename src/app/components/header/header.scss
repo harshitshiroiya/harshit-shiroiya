@@ -3,8 +3,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  height: 2px;
+  background: var(--accent-primary);
   z-index: 1100;
   transition: width 0.1s linear;
 }
@@ -13,39 +13,38 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px var(--shadow-color);
-  background: var(--bg-primary) !important;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, min-height 0.3s ease;
+  background: var(--header-bg) !important;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid var(--border-color);
+  transition: background-color 0.3s ease;
 
   &.shrunk {
-    box-shadow: 0 2px 12px var(--shadow-color);
+    border-bottom-color: var(--border-color);
   }
 
   .toolbar-container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 clamp(12px, 2vw, 40px);
-    min-height: clamp(56px, 6vw, 64px);
+    padding: 0 clamp(16px, 3vw, 22px);
+    min-height: 48px;
   }
 
   .logo {
-    font-size: clamp(18px, 2vw, 28px);
+    font-size: clamp(16px, 1.8vw, 21px);
     font-weight: 600;
     display: flex;
     align-items: center;
     z-index: 1001;
     .logo-text {
-      background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      transition: transform 0.3s ease;
+      color: var(--text-primary);
+      transition: opacity 0.3s ease;
     }
-    &:hover .logo-text { transform: scale(1.05); }
+    &:hover .logo-text { opacity: 0.7; }
   }
 
   .mobile-menu-toggle { display: none; z-index: 1001; color: var(--text-primary); }
@@ -54,15 +53,16 @@
     flex: 1;
     display: flex;
     justify-content: center;
-    gap: clamp(4px, 1vw, 12px);
+    gap: clamp(4px, 1vw, 8px);
     margin: 0 clamp(15px, 3vw, 40px);
     button {
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
+      font-weight: 400;
+      font-size: 14px;
+      letter-spacing: 0;
+      transition: color 0.3s ease, opacity 0.3s ease;
       color: var(--text-primary);
-      padding: clamp(6px, 1vw, 10px) clamp(10px, 1.5vw, 20px);
-      font-size: clamp(12px, 1.2vw, 15px);
+      opacity: 0.8;
+      padding: 8px 12px;
       position: relative;
 
       &::after {
@@ -71,44 +71,46 @@
         bottom: 4px;
         left: 50%;
         width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        height: 1.5px;
+        background: var(--accent-primary);
         transition: width 0.3s ease, left 0.3s ease;
         border-radius: 1px;
       }
 
       &:hover {
+        opacity: 1;
         color: var(--accent-primary);
-        &::after { width: 60%; left: 20%; }
       }
 
       &.active {
+        opacity: 1;
         color: var(--accent-primary);
-        font-weight: 600;
-        &::after { width: 60%; left: 20%; }
+        &::after { width: 100%; left: 0; }
       }
     }
   }
 
   .header-actions {
     display: flex;
-    gap: clamp(2px, 0.5vw, 8px);
+    gap: 4px;
     align-items: center;
     .theme-toggle {
       color: var(--text-primary);
-      transition: all 0.3s ease;
-      &:hover { color: var(--accent-primary); transform: rotate(180deg); }
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+      &:hover { opacity: 1; }
     }
     a {
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s ease;
+      transition: opacity 0.3s ease;
       color: var(--text-primary);
-      &:hover { transform: scale(1.15); color: var(--accent-primary); }
+      opacity: 0.8;
+      &:hover { opacity: 1; }
       svg { fill: currentColor; }
     }
-    .social-icon { color: var(--text-primary); &:hover { color: var(--accent-primary); } }
+    .social-icon { color: var(--text-primary); opacity: 0.8; &:hover { opacity: 1; } }
   }
 }
 
@@ -119,27 +121,29 @@
     .nav-menu {
       display: none;
       position: fixed;
-      top: 56px;
+      top: 48px;
       left: 0;
       right: 0;
       bottom: 0;
-      background: var(--bg-primary);
+      background: var(--header-bg);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
       flex-direction: column;
       padding: 20px;
-      gap: 8px;
+      gap: 4px;
       margin: 0;
       z-index: 999;
-      &.mobile-open { display: flex; animation: slideDown 0.3s ease; }
+      &.mobile-open { display: flex; animation: slideDown 0.25s ease; }
       button {
         width: 100%;
         text-align: left;
-        font-size: 18px;
-        padding: 16px 20px;
-        border-radius: 12px;
-        background: var(--bg-secondary);
+        font-size: 16px;
+        padding: 14px 20px;
+        border-radius: 10px;
+        opacity: 0.8;
         &::after { display: none; }
-        &:hover { background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%); color: white; }
-        &.active { background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%); color: white; }
+        &:hover { opacity: 1; background: var(--bg-secondary); }
+        &.active { opacity: 1; color: var(--accent-primary); background: var(--bg-secondary); }
       }
     }
   }

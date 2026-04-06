@@ -1,98 +1,95 @@
 .education-section {
-  padding: clamp(40px, 8vw, 120px) clamp(16px, 4vw, 60px);
-  background: var(--bg-primary);
-  position: relative;
+  padding: clamp(60px, 10vw, 140px) clamp(16px, 4vw, 60px);
+  background: var(--bg-secondary);
   transition: background-color 0.3s ease;
 
-  .section-container { max-width: 1400px; margin: 0 auto; }
+  .section-container { max-width: 1200px; margin: 0 auto; }
 
   .section-title {
     text-align: center;
-    font-size: clamp(24px, 4vw, 48px);
+    font-size: clamp(28px, 4vw, 48px);
     font-weight: 700;
-    margin-bottom: clamp(30px, 5vw, 60px);
+    letter-spacing: -0.03em;
+    margin-bottom: clamp(30px, 5vw, 56px);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(10px, 1vw, 15px);
+    gap: clamp(8px, 1vw, 12px);
     color: var(--text-primary);
-    mat-icon { font-size: clamp(32px, 4vw, 56px); width: clamp(32px, 4vw, 56px); height: clamp(32px, 4vw, 56px); color: var(--accent-primary); transition: transform 0.5s ease; }
-    &:hover mat-icon { transform: rotate(10deg) scale(1.1); }
+    mat-icon {
+      font-size: clamp(28px, 3.5vw, 44px); width: clamp(28px, 3.5vw, 44px); height: clamp(28px, 3.5vw, 44px);
+      color: var(--accent-primary);
+    }
   }
 
-  .education-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(12px, 2.5vw, 40px); }
+  .education-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(12px, 2vw, 20px); }
 
   .education-card {
-    border-radius: clamp(15px, 1.5vw, 20px);
-    box-shadow: var(--card-shadow);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
     overflow: hidden;
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     background: var(--bg-card);
-    &:hover { box-shadow: var(--card-hover-shadow); transform: translateY(-5px); }
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    &:hover { box-shadow: var(--card-hover-shadow); transform: translateY(-3px); }
 
     .card-accent {
-      height: 5px;
-      background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+      height: 3px;
+      background: var(--accent-primary);
       transition: height 0.3s ease;
     }
-
-    &:hover .card-accent { height: 7px; }
+    &:hover .card-accent { height: 4px; }
 
     mat-card-header {
       display: flex;
       align-items: center;
-      gap: clamp(10px, 1.2vw, 15px);
-      padding: clamp(14px, 2vw, 32px) clamp(16px, 2vw, 32px) clamp(10px, 1.5vw, 20px);
+      gap: clamp(10px, 1.2vw, 14px);
+      padding: clamp(16px, 2vw, 24px);
 
       .school-icon {
-        font-size: clamp(32px, 4vw, 56px); width: clamp(32px, 4vw, 56px); height: clamp(32px, 4vw, 56px);
+        font-size: clamp(28px, 3vw, 40px); width: clamp(28px, 3vw, 40px); height: clamp(28px, 3vw, 40px);
         color: var(--accent-primary);
-        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-        border-radius: 12px;
-        padding: clamp(8px, 0.8vw, 12px);
+        background: var(--bg-secondary);
+        border-radius: 10px;
+        padding: clamp(8px, 0.8vw, 10px);
         box-sizing: content-box;
-        transition: transform 0.4s ease, background 0.3s ease;
       }
 
       .header-text { flex: 1; }
-      mat-card-title { font-size: clamp(17px, 1.7vw, 24px); font-weight: 600; color: var(--text-primary); margin: 0 0 5px 0; }
-      mat-card-subtitle { color: var(--accent-primary); font-weight: 500; font-size: clamp(13px, 1.2vw, 15px); }
+      mat-card-title { font-size: clamp(16px, 1.6vw, 20px); font-weight: 600; letter-spacing: -0.01em; color: var(--text-primary); margin: 0 0 4px 0; }
+      mat-card-subtitle { color: var(--accent-primary); font-weight: 500; font-size: clamp(13px, 1.1vw, 14px); }
     }
 
-    &:hover mat-card-header .school-icon { transform: scale(1.1) rotate(-5deg); }
-
     mat-card-content {
-      padding: 0 clamp(16px, 2vw, 32px) clamp(16px, 2vw, 32px);
+      padding: 0 clamp(16px, 2vw, 24px) clamp(16px, 2vw, 24px);
 
       .education-details {
         display: flex;
-        gap: clamp(10px, 2vw, 30px);
-        margin-bottom: clamp(12px, 1.5vw, 20px);
+        gap: clamp(10px, 2vw, 24px);
+        margin-bottom: clamp(12px, 1.5vw, 16px);
         .detail-item {
           display: flex;
           align-items: center;
-          gap: 8px;
-          color: var(--text-secondary);
-          font-size: clamp(12px, 1vw, 14px);
-          mat-icon { font-size: 18px; width: 18px; height: 18px; color: var(--accent-primary); }
+          gap: 6px;
+          color: var(--text-muted);
+          font-size: clamp(12px, 1vw, 13px);
+          mat-icon { font-size: 16px; width: 16px; height: 16px; color: var(--text-muted); }
         }
       }
 
       .coursework {
-        h4 { font-size: 14px; font-weight: 600; color: var(--text-primary); margin: 0 0 12px 0; text-transform: uppercase; letter-spacing: 0.5px; }
+        h4 { font-size: 12px; font-weight: 600; color: var(--text-muted); margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 0.5px; }
         .coursework-chips {
           display: flex;
           flex-wrap: wrap;
-          gap: 8px;
+          gap: 6px;
           mat-chip {
             font-size: 12px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            color: #667eea;
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            transition: all 0.25s ease;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            border: none;
+            transition: color 0.3s ease;
             cursor: default;
-            &:hover { transform: scale(1.05); background: var(--accent-primary); color: white; border-color: var(--accent-primary); }
+            &:hover { color: var(--accent-primary); }
           }
         }
       }
@@ -101,4 +98,4 @@
 }
 
 @media (max-width: 1023px) { .education-section .education-grid { grid-template-columns: 1fr; } }
-@media (max-width: 767px) { .education-section .education-card mat-card-content .education-details { flex-direction: column; gap: 10px; } }
+@media (max-width: 767px) { .education-section .education-card mat-card-content .education-details { flex-direction: column; gap: 8px; } }
