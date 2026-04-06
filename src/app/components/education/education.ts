@@ -5,11 +5,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { ResumeService } from '../../services/resume.service';
 import { Education } from '../../models/resume.model';
+import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
 
 @Component({
   selector: 'app-education',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatIconModule, MatChipsModule],
+  imports: [CommonModule, MatCardModule, MatIconModule, MatChipsModule, ScrollAnimateDirective],
   templateUrl: './education.html',
   styleUrl: './education.scss'
 })

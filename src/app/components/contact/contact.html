@@ -1,12 +1,12 @@
 <section id="contact" class="contact-section">
   <div class="section-container">
-    <h2 class="section-title">
+    <h2 class="section-title" appScrollAnimate>
       <mat-icon>email</mat-icon>
       Get In Touch
     </h2>
 
     <div class="contact-content">
-      <div class="contact-info" *ngIf="personalInfo">
+      <div class="contact-info" *ngIf="personalInfo" appScrollAnimate [animationDelay]="100">
         <mat-card>
           <mat-card-content>
             <div class="info-item">
@@ -36,7 +36,7 @@
         </mat-card>
       </div>
 
-      <mat-card class="contact-form">
+      <mat-card class="contact-form" appScrollAnimate [animationDelay]="250">
         <mat-card-header>
           <mat-card-title>Send Me a Message</mat-card-title>
         </mat-card-header>

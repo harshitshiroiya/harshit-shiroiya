@@ -7,11 +7,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { ResumeService } from '../../services/resume.service';
 import { Project } from '../../models/resume.model';
 import { appConfig } from '../../config/app.config';
+import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatChipsModule, MatIconModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, MatChipsModule, MatIconModule, ScrollAnimateDirective],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
 })

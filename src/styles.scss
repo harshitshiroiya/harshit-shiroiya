@@ -138,4 +138,105 @@ img {
   max-width: 100%;
   height: auto;
 }
+// ===== Scroll-triggered animation classes =====
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-fade-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-fade-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-fade-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-scale-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+// Override initial transforms for directional variants
+.scroll-hidden.animate-fade-left {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+// Reset for when class hasn't been applied yet
+[animationClass="animate-fade-left"].scroll-hidden {
+  transform: translateX(-40px);
+}
+
+[animationClass="animate-fade-right"].scroll-hidden {
+  transform: translateX(40px);
+}
+
+[animationClass="animate-scale-in"].scroll-hidden {
+  transform: scale(0.85);
+}
+
+// ===== Scroll progress bar =====
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  z-index: 1100;
+  transition: width 0.1s linear;
+}
+
+// ===== Back to top button =====
+.back-to-top {
+  position: fixed;
+  bottom: 60px;
+  right: 24px;
+  z-index: 999;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  pointer-events: none;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  &:hover {
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+    transform: translateY(-3px);
+  }
+
+  &.visible:hover {
+    transform: translateY(-3px);
+  }
+
+  mat-icon {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
 /* You can add global styles to this file, and also import other style files */

@@ -1,12 +1,13 @@
 <section id="skills" class="skills-section">
   <div class="section-container">
-    <h2 class="section-title">
+    <h2 class="section-title" appScrollAnimate>
       <mat-icon>star</mat-icon>
       Skills & Expertise
     </h2>
 
     <div class="skills-grid">
-      <mat-card class="skill-card" *ngFor="let skillGroup of skills">
+      <mat-card class="skill-card" *ngFor="let skillGroup of skills; let i = index"
+        appScrollAnimate [animationDelay]="i * 120">
         <mat-card-header>
           <mat-card-title>{{ skillGroup.category }}</mat-card-title>
         </mat-card-header>

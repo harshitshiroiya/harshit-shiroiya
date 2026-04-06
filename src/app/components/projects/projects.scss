@@ -17,11 +17,10 @@
     color: var(--text-primary);
 
     mat-icon {
-      font-size: clamp(32px, 4vw, 56px);
-      width: clamp(32px, 4vw, 56px);
-      height: clamp(32px, 4vw, 56px);
-      color: var(--accent-primary);
+      font-size: clamp(32px, 4vw, 56px); width: clamp(32px, 4vw, 56px); height: clamp(32px, 4vw, 56px);
+      color: var(--accent-primary); transition: transform 0.5s ease;
     }
+    &:hover mat-icon { transform: rotate(10deg) scale(1.1); }
   }
 
   .projects-grid {
@@ -33,16 +32,17 @@
   .project-card {
     border-radius: clamp(15px, 2vw, 20px);
     box-shadow: var(--card-shadow);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
     display: flex;
     flex-direction: column;
     background: var(--bg-card);
 
     &:hover {
-      transform: translateY(-10px);
+      transform: translateY(-10px) scale(1.01);
       box-shadow: var(--card-hover-shadow);
-      .project-header { background: var(--accent-secondary); }
+      .project-header { background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 100%); }
+      .project-header .project-icon { transform: rotateY(180deg); }
     }
 
     .project-header {
@@ -51,25 +51,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
 
       .project-icon {
-        font-size: clamp(36px, 4vw, 60px);
-        width: clamp(36px, 4vw, 60px);
-        height: clamp(36px, 4vw, 60px);
-        color: white;
+        font-size: clamp(36px, 4vw, 60px); width: clamp(36px, 4vw, 60px); height: clamp(36px, 4vw, 60px);
+        color: white; transition: transform 0.5s ease;
       }
     }
 
     mat-card-header {
       padding: clamp(14px, 2vw, 28px);
       background: var(--bg-card);
-      mat-card-title {
-        font-size: clamp(16px, 2vw, 24px);
-        font-weight: 600;
-        color: var(--text-primary);
-        margin: 0;
-      }
+      mat-card-title { font-size: clamp(16px, 2vw, 24px); font-weight: 600; color: var(--text-primary); margin: 0; }
     }
 
     mat-card-content {
@@ -93,6 +86,9 @@
           color: var(--accent-primary);
           font-size: clamp(10px, 1vw, 12px);
           height: 28px;
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+          cursor: default;
+          &:hover { transform: scale(1.08); background: var(--accent-primary); color: white; }
         }
       }
     }
@@ -107,7 +103,9 @@
         align-items: center;
         gap: 5px;
         text-decoration: none;
-        mat-icon { font-size: 18px; width: 18px; height: 18px; }
+        transition: all 0.3s ease;
+        mat-icon { font-size: 18px; width: 18px; height: 18px; transition: transform 0.3s ease; }
+        &:hover mat-icon { transform: rotate(15deg); }
       }
     }
   }

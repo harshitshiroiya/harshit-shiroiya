@@ -16,7 +16,8 @@
     justify-content: center;
     gap: clamp(10px, 1vw, 15px);
     color: var(--text-primary);
-    mat-icon { font-size: clamp(32px, 4vw, 56px); width: clamp(32px, 4vw, 56px); height: clamp(32px, 4vw, 56px); color: var(--accent-primary); }
+    mat-icon { font-size: clamp(32px, 4vw, 56px); width: clamp(32px, 4vw, 56px); height: clamp(32px, 4vw, 56px); color: var(--accent-primary); transition: transform 0.5s ease; }
+    &:hover mat-icon { transform: rotate(15deg) scale(1.1); }
   }
 
   .skills-grid {
@@ -27,7 +28,7 @@
     .skill-card {
       border-radius: clamp(15px, 1.5vw, 20px);
       box-shadow: var(--card-shadow);
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       overflow: hidden;
       background: var(--bg-card);
       &:hover { transform: translateY(-10px); box-shadow: var(--card-hover-shadow); }
@@ -36,7 +37,12 @@
         background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
         padding: clamp(14px, 2vw, 28px);
         color: white;
+        transition: background 0.4s ease;
         mat-card-title { color: white; font-size: clamp(16px, 1.5vw, 22px); font-weight: 600; margin: 0; }
+      }
+
+      &:hover mat-card-header {
+        background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 100%);
       }
 
       mat-card-content { padding: clamp(14px, 2vw, 28px); }
@@ -50,7 +56,9 @@
           color: var(--chip-text);
           border: 1px solid var(--border-color);
           font-size: clamp(11px, 1vw, 13px);
-          &:hover { background: var(--accent-primary); color: white; }
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+          cursor: default;
+          &:hover { background: var(--accent-primary); color: white; transform: scale(1.08); box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3); }
         }
       }
     }

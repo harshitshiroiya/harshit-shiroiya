@@ -1,11 +1,13 @@
 <section id="home" class="hero">
-  <div class="hero-content" *ngIf="personalInfo">
+  <div class="hero-content" *ngIf="personalInfo" [class.hero-entered]="heroVisible">
     <div class="hero-text">
       <h1 class="hero-title">
         <span class="greeting">Hi, I'm</span>
         <span class="name">{{ personalInfo.name }}</span>
       </h1>
-      <p class="hero-subtitle">{{ personalInfo.title }}</p>
+      <p class="hero-subtitle">
+        {{ typedTitle }}<span class="typing-cursor" [class.blink]="showCursor">|</span>
+      </p>
       <p class="hero-description">{{ personalInfo.summary }}</p>
 
       <div class="hero-actions">
@@ -46,6 +48,14 @@
         <mat-icon class="large-icon">person</mat-icon>
       </div>
       <img *ngIf="personalInfo.profileImage" [src]="personalInfo.profileImage" alt="Profile" />
+    </div>
+  </div>
+
+  <!-- Scroll down indicator -->
+  <div class="scroll-indicator" [class.visible]="heroVisible" (click)="scrollToSection('about')">
+    <span>Scroll Down</span>
+    <div class="scroll-arrow">
+      <mat-icon>keyboard_arrow_down</mat-icon>
     </div>
   </div>
 </section>

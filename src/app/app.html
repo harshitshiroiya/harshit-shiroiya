@@ -11,3 +11,8 @@
 <footer class="footer">
   <p>&copy; {{ appConfig.currentYear }} <a href="mailto:harshitshiroiya@gmail.com">{{ appConfig.appName }}</a>. All rights reserved.</p>
 </footer>
+
+<!-- Back to top button -->
+<button class="back-to-top" [class.visible]="showBackToTop()" (click)="scrollToTop()" aria-label="Back to top">
+  <mat-icon>keyboard_arrow_up</mat-icon>
+</button>

@@ -1,12 +1,13 @@
 <section id="projects" class="projects-section">
   <div class="section-container">
-    <h2 class="section-title">
+    <h2 class="section-title" appScrollAnimate>
       <mat-icon>folder_special</mat-icon>
       Featured Projects
     </h2>
 
     <div class="projects-grid">
-      <mat-card class="project-card" *ngFor="let project of projects">
+      <mat-card class="project-card" *ngFor="let project of projects; let i = index"
+        appScrollAnimate [animationDelay]="i * 120">
         <div class="project-header">
           <mat-icon class="project-icon">folder</mat-icon>
         </div>

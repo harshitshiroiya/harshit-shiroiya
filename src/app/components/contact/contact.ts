@@ -10,19 +10,21 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ResumeService } from '../../services/resume.service';
 import { PersonalInfo } from '../../models/resume.model';
 import { appConfig } from '../../config/app.config';
+import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
   imports: [
-    CommonModule, 
-    MatCardModule, 
-    MatButtonModule, 
-    MatIconModule, 
-    MatFormFieldModule, 
-    MatInputModule, 
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ScrollAnimateDirective
   ],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
@@ -58,7 +60,6 @@ export class Contact implements OnInit {
 
     this.sending = true;
 
-    // Create mailto link with pre-filled content
     const subject = encodeURIComponent(`Portfolio Contact from ${this.formData.name}`);
     const body = encodeURIComponent(
       `Name: ${this.formData.name}\nEmail: ${this.formData.email}\n\nMessage:\n${this.formData.message}`

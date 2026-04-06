@@ -1,47 +1,47 @@
 <section id="about" class="about-section">
   <div class="section-container">
-    <h2 class="section-title">
+    <h2 class="section-title" appScrollAnimate>
       <mat-icon>info</mat-icon>
       About Me
     </h2>
 
-    <mat-card class="about-card">
+    <mat-card class="about-card" appScrollAnimate [animationDelay]="100">
       <mat-card-content>
         <p class="about-text">{{ professionalSummary }}</p>
 
         <div class="about-highlights">
-          <div class="highlight">
+          <div class="highlight" appScrollAnimate [animationDelay]="0">
             <mat-icon>memory</mat-icon>
             <h3>Clinical Software Development</h3>
             <p>Architecting micro-frontend Angular applications with .NET Core and Azure cloud services</p>
           </div>
-          <div class="highlight">
+          <div class="highlight" appScrollAnimate [animationDelay]="150">
             <mat-icon>cloud</mat-icon>
             <h3>Cloud & Microservices</h3>
             <p>Orchestrating containerized deployments on Azure AKS with event-driven architecture</p>
           </div>
-          <div class="highlight">
+          <div class="highlight" appScrollAnimate [animationDelay]="300">
             <mat-icon>speed</mat-icon>
             <h3>Performance Optimization</h3>
             <p>Cutting API latency by 50% and improving rendering performance by 40% with distributed caching</p>
           </div>
         </div>
 
-        <div class="fun-facts">
+        <div class="fun-facts" appScrollAnimate [animationDelay]="200">
           <h3 class="fun-facts-title">
             <mat-icon>emoji_emotions</mat-icon>
             Fun Facts
           </h3>
           <div class="fun-facts-grid">
-            <div class="fun-fact">
+            <div class="fun-fact" appScrollAnimate [animationDelay]="0">
               <span class="emoji">⚽</span>
               <p>Soccer enthusiast who never misses a match</p>
             </div>
-            <div class="fun-fact">
+            <div class="fun-fact" appScrollAnimate [animationDelay]="100">
               <span class="emoji">🔴</span>
               <p>Die-hard Manchester United fan - Glory Glory Man United!</p>
             </div>
-            <div class="fun-fact">
+            <div class="fun-fact" appScrollAnimate [animationDelay]="200">
               <span class="emoji">🎓</span>
               <p>Proud Hoosier representing Indiana University</p>
             </div>

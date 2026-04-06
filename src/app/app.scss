@@ -22,7 +22,10 @@ main {
     margin: 0;
     font-size: 12px;
     opacity: 0.7;
+    transition: opacity 0.3s ease;
   }
+
+  &:hover p { opacity: 1; }
 
   a {
     color: inherit;
@@ -32,6 +35,49 @@ main {
     &:hover {
       color: var(--accent-primary);
     }
+  }
+}
+
+// Back to top button
+.back-to-top {
+  position: fixed;
+  bottom: 60px;
+  right: 24px;
+  z-index: 999;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  pointer-events: none;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  &:hover {
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+  }
+
+  &.visible:hover {
+    transform: translateY(-3px);
+  }
+
+  mat-icon {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
   }
 }
 

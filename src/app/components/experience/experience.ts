@@ -5,11 +5,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ResumeService } from '../../services/resume.service';
 import { Experience as ExperienceModel } from '../../models/resume.model';
+import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
 
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatIconModule, MatBadgeModule],
+  imports: [CommonModule, MatCardModule, MatIconModule, MatBadgeModule, ScrollAnimateDirective],
   templateUrl: './experience.html',
   styleUrl: './experience.scss',
 })

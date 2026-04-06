@@ -1,12 +1,13 @@
 <section id="experience" class="experience-section">
   <div class="section-container">
-    <h2 class="section-title">
+    <h2 class="section-title" appScrollAnimate>
       <mat-icon>work</mat-icon>
       Experience
     </h2>
 
     <div class="timeline">
-      <mat-card class="experience-card" *ngFor="let exp of experiences; let last = last">
+      <mat-card class="experience-card" *ngFor="let exp of experiences; let i = index; let last = last"
+        appScrollAnimate [animationDelay]="i * 150">
         <div class="timeline-marker">
           <div class="marker" [class.current]="exp.current"></div>
           <div class="line" *ngIf="!last"></div>

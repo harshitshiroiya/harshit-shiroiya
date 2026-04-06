@@ -1,12 +1,13 @@
 <section id="education" class="education-section">
   <div class="section-container">
-    <h2 class="section-title">
+    <h2 class="section-title" appScrollAnimate>
       <mat-icon>school</mat-icon>
       Education
     </h2>
 
     <div class="education-grid">
-      <mat-card class="education-card" *ngFor="let edu of education">
+      <mat-card class="education-card" *ngFor="let edu of education; let i = index"
+        appScrollAnimate [animationDelay]="i * 150">
         <div class="card-accent"></div>
         <mat-card-header>
           <mat-icon class="school-icon">account_balance</mat-icon>
