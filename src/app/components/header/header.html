@@ -13,6 +13,9 @@
     </button>
 
     <nav class="nav-menu" [class.mobile-open]="isMobileMenuOpen()">
+      <button mat-icon-button class="mobile-close-btn" (click)="toggleMobileMenu()">
+        <mat-icon>close</mat-icon>
+      </button>
       <button mat-button (click)="scrollToSection('about')" [class.active]="activeSection() === 'about'">About</button>
       <button mat-button (click)="scrollToSection('skills')" [class.active]="activeSection() === 'skills'">Skills</button>
       <button mat-button (click)="scrollToSection('experience')" [class.active]="activeSection() === 'experience'">Experience</button>

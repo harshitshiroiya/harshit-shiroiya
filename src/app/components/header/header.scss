@@ -121,35 +121,61 @@
     .nav-menu {
       display: none;
       position: fixed;
-      top: 48px;
+      top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: var(--header-bg);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      background: var(--bg-primary);
       flex-direction: column;
-      padding: 20px;
+      justify-content: center;
+      align-items: stretch;
+      padding: 24px;
       gap: 4px;
       margin: 0;
-      z-index: 999;
-      &.mobile-open { display: flex; animation: slideDown 0.25s ease; }
-      button {
+      z-index: 1002;
+      overflow-y: auto;
+
+      .mobile-close-btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        color: var(--text-primary);
+        opacity: 0.6;
+        &:hover { opacity: 1; }
+      }
+
+      &.mobile-open { display: flex; animation: fadeIn 0.2s ease; }
+
+      button:not(.mobile-close-btn) {
         width: 100%;
         text-align: left;
-        font-size: 16px;
-        padding: 14px 20px;
-        border-radius: 10px;
-        opacity: 0.8;
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        padding: 12px 8px;
+        min-height: auto;
+        border-radius: 0;
+        color: var(--text-primary);
+        opacity: 0.5;
+        border-bottom: 1px solid var(--border-color);
+        transition: opacity 0.2s ease;
         &::after { display: none; }
-        &:hover { opacity: 1; background: var(--bg-secondary); }
-        &.active { opacity: 1; color: var(--accent-primary); background: var(--bg-secondary); }
+        &:hover { opacity: 1; }
+        &.active { opacity: 1; color: var(--accent-primary); }
       }
     }
   }
 }
 
+// Hide close button on desktop
+.mobile-close-btn { display: none; }
+
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, PLATFORM_ID, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, PLATFORM_ID, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,7 +14,7 @@ import { appConfig } from '../../config/app.config';
   templateUrl: './hero.html',
   styleUrl: './hero.scss',
 })
-export class Hero implements OnInit, OnDestroy {
+export class Hero implements OnInit, OnDestroy, AfterViewInit {
   personalInfo: PersonalInfo | null = null;
   appConfig = appConfig;
   typedTitle = '';
@@ -26,6 +26,8 @@ export class Hero implements OnInit, OnDestroy {
   private cursorInterval: ReturnType<typeof setInterval> | null = null;
   private fullTitle = '';
   private typingIndex = 0;
+
+  private cdr = inject(ChangeDetectorRef);
 
   constructor(private resumeService: ResumeService) {}
 
@@ -39,12 +41,18 @@ export class Hero implements OnInit, OnDestroy {
     });
 
     if (isPlatformBrowser(this.platformId)) {
-      requestAnimationFrame(() => {
-        this.heroVisible = true;
-      });
       this.cursorInterval = setInterval(() => {
         this.showCursor = !this.showCursor;
       }, 530);
+    }
+  }
+
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      setTimeout(() => {
+        this.heroVisible = true;
+        this.cdr.detectChanges();
+      }, 50);
     }
   }
 
