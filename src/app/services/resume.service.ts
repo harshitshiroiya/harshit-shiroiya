@@ -15,46 +15,34 @@ export class ResumeService {
       phone: appConfig.socialMedia.phone,
       location: 'Cincinnati, USA',
       profileImage: 'Harshit.jpg',
-      summary: 'Software Engineer with expertise in building scalable clinical and enterprise applications using Angular, .NET Core, and Azure cloud services. Experienced in microservices and micro-frontend architecture, distributed caching, event-driven systems, CI/CD pipelines, and mentoring development teams.',
+      summary: 'Full-stack Software Engineer with 4+ years of experience building and shipping distributed, cloud-native systems across .NET Core, Angular, React, and Azure. Skilled in microservices, event-driven architecture, performance tuning, and observability, with hands-on experience integrating GenAI tooling (GitHub Copilot, LLM agents, RAG) into production engineering workflows. Active contributor to code reviews, unit and integration testing, and on-call rotations in regulated environments.',
       socialLinks: [
         { name: 'GitHub', url: appConfig.socialMedia.github, icon: 'github' },
         { name: 'LinkedIn', url: appConfig.socialMedia.linkedin, icon: 'linkedin' },
         { name: 'Twitter', url: appConfig.socialMedia.twitter, icon: 'twitter' }
       ]
     },
-    professional_summary: 'Results-driven Software Engineer with experience in designing and implementing scalable web applications. Expertise in Angular, .NET Core, C#, Azure cloud services (AKS, Redis, Service Bus), and microservices architecture. Proven track record of cutting API latency by 50%, improving scalability by 40%, and mentoring junior engineers. Committed to delivering high-quality, maintainable code and fostering collaborative development environments.',
+    professional_summary: 'Full-stack Software Engineer with 4+ years of experience building and shipping distributed, cloud-native systems across .NET Core, Angular, React, and Azure. Skilled in microservices, event-driven architecture, performance tuning, and observability, with hands-on experience integrating GenAI tooling (GitHub Copilot, LLM agents, RAG) into production engineering workflows. Active contributor to code reviews, unit and integration testing, and on-call rotations in regulated environments.',
     skills: [
       {
-        category: 'Languages',
-        items: ['Python', 'TypeScript', 'JavaScript', 'C#', 'Java', 'C', 'PHP', 'SQL']
+        category: 'AI / ML & GenAI',
+        items: ['GitHub Copilot', 'Azure OpenAI', 'LangChain', 'RAG', 'LLM prompt engineering', 'AI Agent development', 'PyTorch', 'scikit-learn', 'TensorFlow', 'Azure AI Search', 'embeddings', 'NLP']
       },
       {
-        category: 'Frontend',
-        items: ['Angular', 'RxJS', 'React', 'Vue.js', 'HTML5', 'CSS3', 'Bootstrap', 'jQuery', 'AJAX', 'Selenium']
+        category: 'Languages & Frontend',
+        items: ['Python', 'TypeScript', 'JavaScript', 'C#', 'Java', 'SQL', 'Angular (Signals, RxJS)', 'React', 'Vue.js', 'HTML5', 'Bootstrap']
       },
       {
         category: 'Backend & APIs',
         items: ['.NET Core (C#)', 'ASP.NET', 'Node.js', 'Express.js', 'Django', 'Flask', 'GraphQL', 'RESTful APIs', 'Entity Framework', 'MVC']
       },
       {
-        category: 'Cloud & DevOps',
-        items: ['Azure (AKS, Container Registry, Service Bus, Blob Storage, Monitor, App Insights, Cache for Redis)', 'AWS (S3, RDS, EC2, Lambda, CodePipeline, CodeBuild)', 'GCP', 'Docker', 'Kubernetes', 'CI/CD', 'Jenkins', 'GitHub Actions', 'Azure DevOps']
+        category: 'Cloud, DevOps & Data',
+        items: ['Azure (AKS, Service Bus, Blob Storage, App Insights, Cache for Redis, OpenAI, AI Search)', 'AWS (S3, RDS, EC2, Lambda, CodePipeline)', 'GCP', 'Docker', 'Kubernetes', 'CI/CD', 'GitHub Actions', 'Azure DevOps', 'SQL Server', 'PostgreSQL', 'MongoDB', 'CosmosDB', 'Redis', 'Memcached']
       },
       {
-        category: 'Databases',
-        items: ['SQL Server', 'PostgreSQL', 'MongoDB', 'MySQL', 'CosmosDB', 'DynamoDB', 'Amazon RDS', 'Amazon S3', 'Redis', 'Memcached']
-      },
-      {
-        category: 'Architecture',
-        items: ['Microservices', 'Micro-frontend', 'Event-Driven Architecture', 'ESB Messaging', 'Distributed Systems', 'MVC', 'Caching Strategies']
-      },
-      {
-        category: 'Tools',
-        items: ['Git', 'GitHub', 'Bitbucket', 'JIRA', 'Postman', 'Docker', 'ServiceNow', 'OAuth 2.0', 'Agile/Scrum', 'Crucible']
-      },
-      {
-        category: 'Certifications',
-        items: ['Infosys Certified Software Engineer', 'Microsoft Certified Python Programmer', 'Star Certified Cyber User']
+        category: 'Architecture & Practices',
+        items: ['Microservices', 'Micro-frontends', 'Event-Driven', 'ESB Messaging', 'Distributed Systems', 'System Design', 'Code Review', 'Unit Testing', 'Integration Testing', 'TDD', 'Pair Programming', 'On-Call', 'Git', 'JIRA', 'Postman', 'OAuth 2.0', 'Agile/Scrum']
       }
     ],
     experience: [
@@ -65,15 +53,15 @@ export class ResumeService {
         endDate: 'Present',
         location: 'Cincinnati, USA',
         current: true,
-        description: 'Architecting and maintaining clinical software products using Angular, C#, .NET Core, and Azure cloud services.',
+        description: 'Building and shipping clinical software products using Angular, .NET Core, Azure, and GenAI tooling.',
         achievements: [
-          'Architected 3 clinical software products as micro-frontend Angular applications using Angular Signals for reactive state management, eliminating redundant change-detection cycles and improving rendering performance by 40%',
-          'Engineered a version control system for clinical studies leveraging Azure Blob Storage to maintain 100% version histories across all study configurations, ensuring full audit traceability',
-          'Orchestrated containerized microservice deployments on Azure Kubernetes Service (AKS) with Azure Container Registry, boosting scalability 40%, accelerating deployment velocity 30%, and reducing infrastructure costs by 35%',
-          'Deployed a distributed caching layer using Azure Cache for Redis with .NET Core (C#) and Entity Framework, cutting API latency by 50% and reducing database load by 35% under peak workloads for 2,000+ concurrent users',
-          'Established ESB-based and event-driven microservice communication via Azure Service Bus; instrumented observability with Azure Monitor and Application Insights, reducing incident mean-time-to-detect (MTTD) by 60%',
-          'Introduced GraphQL alongside RESTful APIs for clinical dashboards, cutting API response time by 35% and eliminating over-fetching; refactored monolithic application into microservices, improving scalability and maintainability',
-          'Led sprint planning across 3 clinical products, achieving 99% alignment with business owners on priorities and timelines; mentored 2 junior engineers and boosted UX satisfaction scores by 25%'
+          'Developed 3 clinical software products as micro-frontend Angular applications using Angular Signals for reactive state management, eliminating redundant change-detection cycles and improving rendering performance by 40%',
+          'Built and deployed custom GenAI agents and internal Copilot-style assistants on Azure OpenAI + LangChain to automate clinical-study metadata generation, code scaffolding, and PR-review summarization; drove team-wide GitHub Copilot adoption with shared prompting standards and code-review guardrails',
+          'Prototyped a retrieval-augmented generation (RAG) assistant over internal clinical documentation using Azure AI Search and embedding models, cutting average time-to-answer for study-configuration questions from hours to under 2 minutes',
+          'Deployed containerized microservices on Azure Kubernetes Service (AKS) with Azure Container Registry, improving scalability 40% and reducing infrastructure costs by 35%; authored unit and integration tests and participated in weekly code reviews across 3 product squads',
+          'Rolled out a distributed caching layer using Azure Cache for Redis with .NET Core (C#) and Entity Framework, cutting API latency by 50% under peak workloads for 2,000+ concurrent users',
+          'Designed event-driven microservice communication via Azure Service Bus; instrumented observability with Azure Monitor and Application Insights and supported on-call rotations, reducing incident mean-time-to-detect (MTTD) by 60%',
+          'Built a version-control system for clinical studies on Azure Blob Storage ensuring full audit traceability for regulatory review; introduced GraphQL alongside REST, cutting API response time by 35% and eliminating over-fetching'
         ]
       },
       {
@@ -82,12 +70,11 @@ export class ResumeService {
         startDate: 'Aug 2022',
         endDate: 'May 2023',
         location: 'Bloomington, USA',
-        description: 'Architected distributed data pipelines and NLP-based research tools for large-scale social media analysis.',
+        description: 'Built distributed data pipelines and NLP-based research tools for large-scale social media sentiment analysis.',
         achievements: [
-          'Architected a distributed data ingestion pipeline integrating Twitter, YouTube, and Reddit APIs to process high-volume sentiment data for 164 entities, aiding 1,000+ researchers with NLP-based emotion classification',
-          'Optimized data workflows with advanced algorithms and SQL pipelines, reducing processing time by 30% and enabling insights on medication efficacy for 10,000+ patients',
+          'Built a distributed data-ingestion pipeline integrating Twitter, YouTube, and Reddit APIs to process high-volume sentiment data for 164 entities; optimized SQL workflows to cut processing time 30% and surface medication-efficacy insights across records for 10,000+ patients, enabling NLP-based emotion classification for 1,000+ researchers',
           'Introduced caching and async processing alongside Azure Data Lake Storage and Azure Service Bus for large-scale data management and reliable service communication, reducing latency by 50%',
-          'Designed optimized MongoDB schemas for time-series social data with compound indexes, enabling sub-second querying'
+          'Designed optimized MongoDB schemas for time-series social data with compound indexes, enabling sub-second querying across multi-million-document collections'
         ]
       },
       {
@@ -98,9 +85,8 @@ export class ResumeService {
         location: 'Indianapolis, USA',
         description: 'Built scalable full-stack web applications with focus on accessibility, cloud deployment, and marketing automation workflows.',
         achievements: [
-          'Built scalable .NET Core (C#) backend microservices and WCAG 2.1-compliant frontends using Angular and Vue.js, integrating AWS S3 and Amazon RDS (PostgreSQL) to support a 30% scalability improvement across high-traffic marketing automation workflows',
-          'Configured Memcached server-side caching layer, reducing database round-trips by 40% and boosting throughput for peak-load marketing campaigns serving thousands of concurrent users',
-          'Automated end-to-end CI/CD pipelines using AWS CodePipeline and CodeBuild, cutting release cycle time by 25% and enabling faster, more reliable feature deployments across environments'
+          'Built scalable .NET Core (C#) backend microservices and WCAG 2.1-compliant frontends using Angular and Vue.js, integrating AWS S3 and Amazon RDS (PostgreSQL) to support a 30% scalability improvement across high-traffic marketing-automation workflows',
+          'Configured a Memcached server-side caching layer that reduced database round-trips by 40% and boosted throughput for peak-load campaigns; automated CI/CD pipelines using AWS CodePipeline, cutting release cycle time by 25%'
         ]
       }
     ],
